@@ -7,20 +7,15 @@ const Stats: React.FC = () => {
   const stats = CONTENT[language].stats;
 
   return (
-    <section className="py-20 bg-slate-900 text-white border-y border-slate-800 relative overflow-hidden">
-      {/* Animated Background Mesh */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-violet-900/60 via-slate-900 to-transparent animate-spin-slow origin-center"></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-slate-800/50">
+    <section className="py-24 bg-brand-light border-y border-slate-200">
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-slate-200">
           {stats.map((stat, index) => (
-            <div key={index} className="pt-8 md:pt-0 group cursor-default">
-              <div className="text-5xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 mb-2 transform transition-transform duration-500 group-hover:scale-110 group-hover:from-cyan-300 group-hover:to-violet-400">
+            <div key={index} className="pt-8 md:pt-0">
+              <div className="text-5xl lg:text-7xl font-black text-brand-black mb-3 tracking-tight">
                 {stat.value}
               </div>
-              <div className="text-cyan-400 font-medium tracking-wide text-lg group-hover:text-white transition-colors">
+              <div className="text-slate-500 font-bold tracking-wide text-sm uppercase">
                 {stat.label}
               </div>
             </div>

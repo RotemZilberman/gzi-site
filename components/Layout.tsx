@@ -32,36 +32,33 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }, []);
 
   return (
-    <div className={`min-h-screen flex flex-col font-sans text-slate-900 ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>
+    <div className={`min-h-screen flex flex-col font-sans text-brand-black ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>
       {/* Header */}
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6'
+          isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-8'
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className={`p-2 rounded-lg transition-colors ${isScrolled ? 'bg-violet-50 text-violet-600' : 'bg-white/80 text-violet-600'}`}>
-              <Layers className="w-6 h-6" />
+          <a href="#" className="flex items-center gap-3 group">
+            <div className={`p-2 rounded-lg bg-brand-black text-white`}>
+              <Layers className="w-5 h-5" />
             </div>
             <div className="flex flex-col">
-              <span className={`text-xl font-black tracking-tight leading-none ${isScrolled ? 'text-slate-900' : 'text-slate-900'}`}>
-                GZI<span className="text-violet-600">.</span>Systems
-              </span>
-              <span className="text-[10px] tracking-widest uppercase font-bold text-slate-400">
-                AI-GIS Consultants
+              <span className="text-xl font-black tracking-tight leading-none text-brand-black">
+                GZI<span className="text-brand-primary">.</span>Systems
               </span>
             </div>
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-10">
             {navItems.map((item) => (
               <a 
                 key={item.label} 
                 href={item.href}
-                className="text-sm font-bold text-slate-600 hover:text-violet-600 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:right-0 after:w-0 after:h-[2px] after:bg-violet-600 after:transition-all hover:after:w-full"
+                className="text-sm font-bold text-slate-600 hover:text-brand-black transition-colors"
               >
                 {item.label}
               </a>
@@ -70,7 +67,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             {/* Language Toggle */}
             <button 
               onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-violet-100 hover:text-violet-600 transition-all text-xs font-bold border border-slate-200"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 text-slate-900 hover:bg-slate-200 transition-all text-xs font-bold"
             >
               <Globe className="w-3.5 h-3.5" />
               <span>{language === 'he' ? 'EN' : 'עב'}</span>
@@ -81,13 +78,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="flex items-center gap-4 md:hidden">
             <button 
               onClick={toggleLanguage}
-              className="flex items-center gap-1 px-2 py-1 rounded bg-white/50 text-slate-700 text-xs font-bold border border-slate-200"
+              className="flex items-center gap-1 px-2 py-1 rounded bg-slate-100 text-slate-900 text-xs font-bold"
             >
               <Globe className="w-3.5 h-3.5" />
               <span>{language === 'he' ? 'EN' : 'עב'}</span>
             </button>
             <button 
-              className="p-2 text-slate-600"
+              className="p-2 text-brand-black"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X /> : <Menu />}
@@ -102,7 +99,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <a 
                 key={item.label} 
                 href={item.href}
-                className="text-lg font-bold text-slate-800 py-2 border-b border-slate-50 last:border-0"
+                className="text-lg font-bold text-slate-900 py-3 border-b border-slate-50 last:border-0"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
@@ -118,26 +115,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-50 border-t border-slate-200 py-12">
+      <footer className="bg-white border-t border-slate-200 py-16">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2 opacity-75">
-              <Layers className="w-5 h-5 text-slate-400" />
-              <span className="font-bold text-slate-700">GZI Systems</span>
+            <div className="flex items-center gap-2">
+              <Layers className="w-5 h-5 text-brand-black" />
+              <span className="font-bold text-brand-black">GZI Systems</span>
             </div>
             
-            <div className="text-sm text-slate-500 text-center md:text-right">
+            <div className="text-sm text-slate-500 text-center md:text-right font-medium">
               © {new Date().getFullYear()} GZ Information Systems.
-              <br className="md:hidden" />
-              <span className="hidden md:inline mx-2 text-slate-300">|</span>
-              {language === 'he' ? 'נבנה עבור מנהיגות עירונית.' : 'Built for Municipal Leadership.'}
-            </div>
-
-            <div className="flex gap-4">
-               {/* Social placeholders */}
-               <div className="w-8 h-8 rounded-full bg-slate-200 hover:bg-violet-100 hover:text-violet-600 flex items-center justify-center transition-colors cursor-pointer">
-                 <Globe className="w-4 h-4" />
-               </div>
             </div>
           </div>
         </div>

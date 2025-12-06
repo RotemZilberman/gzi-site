@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, ChevronDown, Map as MapIcon, Database, Activity } from 'lucide-react';
+import { ArrowLeft, Map as MapIcon, Database, Activity, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import { CONTENT } from '../constants';
 
@@ -9,52 +9,89 @@ const Hero: React.FC = () => {
   const isRtl = dir === 'rtl';
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden pt-24 pb-10">
-      {/* Background Mesh Gradient */}
-      <div className="absolute inset-0 bg-white" />
-      <div className="absolute inset-0 bg-ai-mesh opacity-60 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-full h-full bg-tech-grid opacity-30 pointer-events-none" />
+    <section className="relative w-full min-h-screen flex flex-col justify-center bg-white pt-24 pb-10 overflow-hidden">
       
-      {/* Abstract Glowing Orbs */}
-      <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-violet-200/40 rounded-full blur-[100px] -z-10 animate-pulse-slow" />
-      <div className="absolute bottom-[10%] right-[5%] w-[400px] h-[400px] bg-cyan-100/50 rounded-full blur-[80px] -z-10" />
+      {/* Background Ambience - City GIS Pattern & Blobs */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+        
+        {/* Custom City Map Pattern - Buildings, Parks, Roads */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.05] text-slate-900" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="city-gis-pattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+              {/* Roads Grid */}
+              <path d="M100 0V200 M0 100H200" stroke="currentColor" strokeWidth="4" fill="none" />
+              <path d="M50 0V200 M150 0V200 M0 50H200 M0 150H200" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.6"/>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+              {/* Park Area (Top Left) - Organic Shape with Trees */}
+              <path d="M10 10 Q40 5 60 25 T90 45 V90 H10 V10Z" fill="currentColor" opacity="0.15" />
+              <circle cx="30" cy="30" r="3" fill="currentColor" opacity="0.3" />
+              <circle cx="60" cy="60" r="4" fill="currentColor" opacity="0.3" />
+              <circle cx="45" cy="75" r="2.5" fill="currentColor" opacity="0.3" />
+
+              {/* High Density Commercial Buildings (Top Right) */}
+              <rect x="110" y="10" width="35" height="35" fill="currentColor" opacity="0.25" />
+              <rect x="155" y="10" width="35" height="35" fill="currentColor" opacity="0.25" />
+              <rect x="110" y="55" width="80" height="35" fill="currentColor" opacity="0.25" />
+
+              {/* Public Institutions / Complex Shapes (Bottom Left) */}
+              <path d="M10 110 H40 V190 H10 Z M50 110 H90 V140 H50 Z M50 150 H90 V190 H50 Z" fill="currentColor" opacity="0.2" />
+
+              {/* Residential Blocks (Bottom Right) */}
+              <g opacity="0.15">
+                <rect x="110" y="110" width="20" height="20" fill="currentColor" />
+                <rect x="140" y="110" width="20" height="20" fill="currentColor" />
+                <rect x="170" y="110" width="20" height="20" fill="currentColor" />
+                
+                <rect x="110" y="140" width="20" height="20" fill="currentColor" />
+                <rect x="140" y="140" width="20" height="20" fill="currentColor" />
+                <rect x="170" y="140" width="20" height="20" fill="currentColor" />
+
+                <rect x="110" y="170" width="20" height="20" fill="currentColor" />
+                <rect x="140" y="170" width="20" height="20" fill="currentColor" />
+                <rect x="170" y="170" width="20" height="20" fill="currentColor" />
+              </g>
+
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#city-gis-pattern)" />
+        </svg>
+        
+        {/* Animated Blobs for "Life" */}
+        <div className="absolute top-[-10%] left-[-5%] w-96 h-96 bg-blue-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob"></div>
+        <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-violet-100/40 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob [animation-delay:2000ms]"></div>
+        <div className="absolute bottom-[-20%] left-[20%] w-[400px] h-[400px] bg-cyan-50/60 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob [animation-delay:4000ms]"></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10 flex-grow flex flex-col justify-center">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
           
           {/* Text Content */}
-          <div className={`lg:w-1/2 text-center ${isRtl ? 'lg:text-right' : 'lg:text-left'} z-20`}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur border border-violet-100 shadow-sm mb-8 animate-fade-in-up">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-violet-600"></span>
-              </span>
-              <span className="text-sm font-bold text-violet-800 tracking-wide uppercase">{t.badge}</span>
-            </div>
+          <div className={`lg:w-1/2 ${isRtl ? 'lg:text-right' : 'lg:text-left'} text-center z-20`}>
+            
+            {/* Badge Removed */}
 
-            <h1 className="text-5xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-6 tracking-tight animate-fade-in-up [animation-delay:200ms]">
+            <h1 className="text-5xl lg:text-7xl font-black text-brand-black leading-[1.05] mb-8 tracking-tight animate-fade-in-up [animation-delay:100ms]">
               {t.titleStart} <br />
-              <span className="text-transparent bg-clip-text bg-ai-gradient-text">
+              <span className="text-brand-primary">
                 {t.titleEnd}
               </span>
             </h1>
 
-            <p className={`text-xl text-slate-600 mb-10 leading-relaxed font-light max-w-2xl lg:mx-0 mx-auto animate-fade-in-up [animation-delay:400ms]`}>
+            <p className={`text-xl text-slate-600 mb-10 leading-relaxed font-normal max-w-xl lg:mx-0 mx-auto animate-fade-in-up [animation-delay:200ms]`}>
               {t.subtitle}
             </p>
 
-            <div className={`flex flex-col sm:flex-row gap-5 justify-center ${isRtl ? 'lg:justify-start' : 'lg:justify-start'} items-center animate-fade-in-up [animation-delay:600ms]`}>
+            <div className={`flex flex-col sm:flex-row gap-5 justify-center ${isRtl ? 'lg:justify-start' : 'lg:justify-start'} items-center animate-fade-in-up [animation-delay:400ms]`}>
               <a 
                 href="#contact" 
-                className="group relative px-8 py-4 bg-ai-gradient text-white rounded-xl font-bold transition-all hover:shadow-xl hover:shadow-violet-200 hover:-translate-y-1 flex items-center gap-3 overflow-hidden shadow-lg shadow-violet-500/20"
+                className="px-8 py-4 bg-brand-black text-white rounded-full font-bold transition-all hover:bg-slate-800 flex items-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 group"
               >
-                <div className="absolute inset-0 w-full h-full bg-white/20 translate-x-full group-hover:translate-x-0 transition-transform duration-500 skew-x-12"></div>
-                <span className="relative">{t.ctaPrimary}</span>
-                <ArrowLeft className={`relative w-5 h-5 transition-transform ${isRtl ? 'group-hover:-translate-x-1' : 'rotate-180 group-hover:translate-x-1'}`} />
+                <span>{t.ctaPrimary}</span>
+                <ArrowLeft className={`w-5 h-5 transition-transform ${isRtl ? 'group-hover:-translate-x-1' : 'rotate-180 group-hover:translate-x-1'}`} />
               </a>
               <a 
                 href="#projects" 
-                className="px-8 py-4 bg-white/80 backdrop-blur text-slate-700 border border-slate-200 rounded-xl font-bold transition-all hover:border-violet-300 hover:text-violet-700 hover:shadow-lg"
+                className="px-8 py-4 bg-white/50 backdrop-blur-sm text-brand-black border border-slate-200 rounded-full font-bold transition-all hover:border-brand-black hover:bg-white"
               >
                 {t.ctaSecondary}
               </a>
@@ -62,56 +99,48 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Visual Graphic Element */}
-          <div className="lg:w-1/2 relative w-full animate-fade-in [animation-delay:500ms] flex justify-center">
-            <div className="relative w-[350px] md:w-[500px] aspect-square flex items-center justify-center">
+          <div className="lg:w-1/2 relative w-full animate-fade-in [animation-delay:300ms] flex justify-center lg:justify-end">
+            <div className="relative w-[350px] md:w-[500px] aspect-square flex items-center justify-center animate-float">
               
-              {/* Outer Rotating Rings */}
-              <div className="absolute w-full h-full border border-violet-100/60 rounded-full animate-spin-slow [animation-duration:40s]"></div>
-              <div className="absolute w-[80%] h-[80%] border border-dashed border-cyan-200 rounded-full animate-spin-slow [animation-direction:reverse] [animation-duration:30s]"></div>
-              
-              {/* Central City Image (Circular) */}
-              {/* FIX: 'isolation-isolate' creates a new stacking context to enforce the border-radius clipping during transform */}
-              <div className="absolute w-[60%] h-[60%] rounded-full overflow-hidden border-4 border-white shadow-2xl shadow-violet-500/20 z-10 group isolation-isolate">
+              {/* Spinning Ring - Radar/Scanner Look */}
+              <div className="absolute inset-0 border border-slate-100/50 rounded-full scale-110 animate-[spin_30s_linear_infinite] pointer-events-none">
+                 <div className="absolute top-0 left-1/2 w-3 h-3 bg-brand-primary/20 rounded-full -translate-x-1/2 -translate-y-1/2 blur-sm"></div>
+              </div>
+
+              {/* Central City Image */}
+              <div 
+                className="relative w-[90%] h-[90%] rounded-full overflow-hidden shadow-2xl z-10 isolation-isolate"
+                style={{ 
+                  WebkitMaskImage: 'radial-gradient(circle, white 100%, black 100%)',
+                  maskImage: 'radial-gradient(circle, white 100%, black 100%)'
+                }}
+              >
                  <img 
                    src="https://images.unsplash.com/photo-1543965860-82ed7d542cc4?q=80&w=2060&auto=format&fit=crop" 
                    alt="Tel Aviv Skyline" 
-                   className="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-1000 transform-gpu"
+                   className="w-full h-full object-cover scale-105"
                  />
-                 {/* Gradient Overlay */}
-                 <div className="absolute inset-0 bg-gradient-to-tr from-violet-900/40 to-cyan-500/20 mix-blend-overlay pointer-events-none"></div>
-                 
-                 {/* Center Pulse */}
-                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                    <div className="w-20 h-20 bg-violet-500/20 rounded-full animate-ping-slow"></div>
-                 </div>
+                 <div className="absolute inset-0 bg-brand-black/10"></div>
               </div>
 
-              {/* Connecting Nodes Animation */}
-              <div className="absolute w-[60%] h-[60%] animate-spin-slow [animation-duration:50s] pointer-events-none">
-                 <div className="absolute top-0 left-1/2 w-3 h-3 bg-cyan-400 rounded-full border-2 border-white shadow-lg -translate-x-1/2 -translate-y-1/2"></div>
-                 <div className="absolute bottom-0 left-1/2 w-3 h-3 bg-violet-400 rounded-full border-2 border-white shadow-lg -translate-x-1/2 translate-y-1/2"></div>
-                 <div className="absolute left-0 top-1/2 w-3 h-3 bg-indigo-400 rounded-full border-2 border-white shadow-lg -translate-x-1/2 -translate-y-1/2"></div>
-              </div>
-
-              {/* Floating Widgets */}
-              <div className="absolute -top-4 right-4 bg-white/90 backdrop-blur p-4 rounded-2xl shadow-xl border border-violet-100 animate-float z-20 max-w-[180px]">
+              {/* Minimal Floating Widgets */}
+              <div className="absolute top-[10%] right-0 bg-white p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 animate-fade-in-up [animation-delay:600ms] z-20 w-[160px] hover:scale-105 transition-transform">
                 <div className="flex items-center gap-3 mb-2">
-                   <div className="p-2 bg-violet-100 rounded-lg text-violet-600"><Database size={18} /></div>
-                   <span className="text-xs font-bold text-slate-800">{t.widgets.bigData}</span>
+                   <div className="p-2 bg-slate-50 rounded-md text-brand-black"><Database size={16} /></div>
+                   <span className="text-xs font-bold text-slate-900">{t.widgets.bigData}</span>
                 </div>
-                <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                   <div className="h-full bg-violet-500 w-[70%] animate-pulse"></div>
+                <div className="h-1 w-full bg-slate-100 rounded-full overflow-hidden">
+                   <div className="h-full bg-brand-black w-[70%] animate-[pulse_3s_infinite]"></div>
                 </div>
               </div>
 
-              <div className="absolute bottom-8 -left-4 bg-white/90 backdrop-blur p-4 rounded-2xl shadow-xl border border-cyan-100 animate-float-delayed z-20">
+              <div className="absolute bottom-[15%] left-0 bg-white p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 animate-fade-in-up [animation-delay:800ms] z-20 hover:scale-105 transition-transform">
                 <div className="flex items-center gap-3">
-                   <div className="p-2 bg-cyan-100 rounded-lg text-cyan-600"><MapIcon size={18} /></div>
+                   <div className="p-2 bg-slate-50 rounded-md text-brand-black"><MapIcon size={16} /></div>
                    <div>
-                      <div className="text-xs font-bold text-slate-800">{t.widgets.gis}</div>
-                      <div className="text-[10px] text-slate-400">{t.widgets.syncing}</div>
+                      <div className="text-xs font-bold text-slate-900">{t.widgets.gis}</div>
                    </div>
-                   <Activity className="w-4 h-4 text-green-500 ml-2" />
+                   <Activity className="w-3.5 h-3.5 text-green-600 ml-2 animate-pulse" />
                 </div>
               </div>
 
@@ -121,8 +150,8 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce text-violet-300">
-        <ChevronDown className="w-6 h-6" />
+      <div className="w-full flex justify-center pb-4 animate-bounce opacity-50">
+         <ChevronDown className="w-6 h-6 text-slate-400" />
       </div>
     </section>
   );

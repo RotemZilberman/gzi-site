@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CONTENT } from '../constants';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 
 const Projects: React.FC = () => {
@@ -8,61 +8,69 @@ const Projects: React.FC = () => {
   const t = CONTENT[language].projects;
   const isRtl = dir === 'rtl';
 
-  return (
-    <section id="projects" className="py-24 bg-slate-50 relative overflow-hidden">
-      {/* Background Shapes */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-         <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-violet-100/50 rounded-full blur-[100px]"></div>
-         <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-cyan-100/50 rounded-full blur-[100px]"></div>
-      </div>
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const itemsPerPage = 3;
 
-      <div className="container mx-auto px-6 relative z-10">
+  const nextSlide = () => {
+    setCurrentIndex((prev) => 
+      (prev + itemsPerPage >= t.items.length) ? 0 : prev + itemsPerPage
+    );
+  };
+
+  const visibleProjects = t.items.slice(currentIndex, currentIndex + itemsPerPage);
+
+  return (
+    <section id="projects" className="py-24 bg-white border-t border-slate-100">
+      <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="max-w-2xl">
-            <h2 className="text-sm font-bold tracking-widest text-violet-600 uppercase mb-3">{t.badge}</h2>
-            <h3 className="text-4xl font-black text-slate-900">{t.title}</h3>
-            <p className="text-lg text-slate-600 mt-4 font-light">
+            <h2 className="text-xs font-bold tracking-widest text-slate-500 uppercase mb-4">{t.badge}</h2>
+            <h3 className="text-4xl font-black text-brand-black">{t.title}</h3>
+            <p className="text-lg text-slate-600 mt-4 max-w-xl">
               {t.subtitle}
             </p>
           </div>
           
-          <button className="group flex items-center gap-2 text-violet-700 font-bold hover:text-violet-900 transition-colors">
-            {t.ctaAll}
-            <ArrowLeft className={`w-5 h-5 transition-transform ${isRtl ? 'group-hover:-translate-x-1' : 'rotate-180 group-hover:translate-x-1'}`} />
-          </button>
+          <div className="flex items-center gap-3">
+             <button 
+               onClick={nextSlide}
+               className="p-4 rounded-full bg-brand-black text-white hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+             >
+               {isRtl ? <ArrowLeft size={24} /> : <ArrowRight size={24} />}
+             </button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {t.items.map((project, index) => (
-            <div key={index} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-violet-100 transition-all duration-500 border border-slate-100 flex flex-col h-full">
-              {/* Image Container */}
-              <div className="relative h-64 overflow-hidden">
-                <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 min-h-[500px]">
+          {visibleProjects.map((project, index) => (
+            <div key={`${currentIndex}-${index}`} className="group flex flex-col gap-6 cursor-pointer animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
+              {/* Image Container - Clean, no heavy borders */}
+              <div className="relative h-72 overflow-hidden rounded-2xl bg-slate-100">
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute top-4 right-4 z-20">
-                   <span className="px-3 py-1 bg-white/90 backdrop-blur text-xs font-bold text-violet-700 rounded-full shadow-lg">
+                   <span className="px-3 py-1 bg-white text-xs font-bold text-brand-black rounded-full shadow-sm">
                      {project.category}
                    </span>
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-8 flex flex-col flex-grow">
-                <h4 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-violet-700 transition-colors">
+              {/* Content - Editorial Style */}
+              <div className="flex flex-col flex-grow">
+                <h4 className="text-2xl font-bold text-brand-black mb-2 group-hover:text-brand-primary transition-colors">
                   {project.title}
                 </h4>
-                <p className="text-slate-600 mb-6 text-sm leading-relaxed flex-grow">
+                <p className="text-slate-600 mb-4 text-sm leading-relaxed">
                   {project.description}
                 </p>
                 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mt-auto pt-6 border-t border-slate-100">
+                <div className="flex flex-wrap gap-2 mt-auto">
                   {project.tags.map((tag, i) => (
-                    <span key={i} className="text-[11px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md uppercase tracking-wide">
+                    <span key={i} className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2 py-1 rounded md uppercase tracking-wide">
                       {tag}
                     </span>
                   ))}
