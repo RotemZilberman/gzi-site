@@ -116,8 +116,8 @@ const Hero: React.FC = () => {
                 }}
               >
                  <img 
-                   src="https://images.unsplash.com/photo-1543965860-82ed7d542cc4?q=80&w=2060&auto=format&fit=crop" 
-                   alt="Tel Aviv Skyline" 
+                   src="/images/main_page.jpg" 
+                   alt="GZI Systems" 
                    className="w-full h-full object-cover scale-105"
                  />
                  <div className="absolute inset-0 bg-brand-black/10"></div>

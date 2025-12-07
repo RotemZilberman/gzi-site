@@ -34,7 +34,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-slate-900 mb-1">{t.email}</h4>
-                  <a href="mailto:info@gzi.co.il" className="text-slate-600 hover:text-violet-600 transition-colors">info@gzi.co.il</a>
+                  <a href={`mailto:${t.emailAddress}`} className="text-slate-600 hover:text-violet-600 transition-colors">{t.emailAddress}</a>
                 </div>
               </div>
 
@@ -44,7 +44,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-slate-900 mb-1">{t.phone}</h4>
-                  <a href="tel:+972000000000" className="text-slate-600 hover:text-violet-600 transition-colors">050-1234567</a>
+                  <a href={`tel:${t.phoneHref || t.phoneNumber}`} className="text-slate-600 hover:text-violet-600 transition-colors">{t.phoneNumber}</a>
                 </div>
               </div>
 
@@ -54,7 +54,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-slate-900 mb-1">{t.address}</h4>
-                  <p className="text-slate-600">רחוב הברזל 1, רמת החייל, תל אביב</p>
+                  <p className="text-slate-600">{t.addressText}</p>
                 </div>
               </div>
             </div>
@@ -62,7 +62,12 @@ const Contact: React.FC = () => {
 
           {/* Form Side */}
           <div className="lg:w-1/2">
-            <form className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50">
+            <form 
+              className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50"
+              action={`mailto:${t.emailAddress}?subject=${encodeURIComponent('meeting request from gzi site')}`}
+              method="post"
+              encType="text/plain"
+            >
               <h3 className="text-2xl font-bold text-slate-800 mb-6">{t.formTitle}</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">

@@ -1,5 +1,41 @@
 import { Map, Layers, Database, FileText, ShieldCheck, Cpu, Building2, Server, Network, Shield } from 'lucide-react';
-import { NavItem, ServiceItem, StatItem, ClientCategory, ProjectItem } from './types';
+import { NavItem, ServiceItem, StatItem, ClientCategory, ClientLogo, ProjectItem } from './types';
+
+// Logo assets grouped by category (all live in /public/companies)
+const MUNICIPAL_LOGOS: ClientLogo[] = [
+  { he: 'עיריית אילת', en: 'Eilat Municipality', src: '/companies/local-authorities/Eilat_Logo.svg' },
+  { he: 'עיריית באר יעקב', en: 'Beer Yaakov Municipality', src: '/companies/local-authorities/BEER_YAAKOV_LOGO.jpg' },
+  { he: 'עיריית שדרות', en: 'Sderot Municipality', src: '/companies/local-authorities/logo-2.jpg' },
+  { he: 'מועצה מקומית שדות דן', en: 'Sdot Dan Local Council', src: '/companies/local-authorities/SdotDan.svg.png' },
+  { he: 'מועצה מקומית הגלבוע', en: 'Gilboa Local Council', src: '/companies/local-authorities/Gilboa_Regional_Council_COA.svg.png' },
+  { he: 'מועצה מקומית בית אל', en: 'Beit El Local Council', src: '/companies/local-authorities/logo-2.png' },
+  { he: 'ועדה לתכנון ובניה זמורה', en: 'Zamora Planning Committee', src: '/companies/local-authorities/הוועדה-המקומית-לתכנון-ובנייה-זמורה.jpg' },
+  { he: 'עיריית הרצליה', en: 'Herzliya Municipality', src: '/companies/local-authorities/Herzliya_Logo_2011.svg.png' },
+  { he: 'ועדה לתכנון ובניה מצפה אפק', en: 'Mitzpe Afek Planning Committee', src: '/companies/local-authorities/logo_MitzpeAfeq.png' },
+  { he: 'ועדה לתכנון ובניה רכס הכרמל', en: 'Carmel Ridge Planning Committee', src: '/companies/local-authorities/logo-3.svg' },
+  { he: 'מועצה אזורית חבל אילות', en: 'Hevel Eilot Regional Council', src: '/companies/local-authorities/Hevel_Eilot_Regional_Council_COA.svg.png' },
+  { he: 'מועצה מקומית אבן יהודה', en: 'Even Yehuda Local Council', src: '/companies/local-authorities/אבן_יהודה_סמל.png' },
+  { he: 'מועצה אזורית לכיש', en: 'Lachish Regional Council', src: '/companies/local-authorities/Lachishtransparent.png' },
+  { he: 'מועצה מקומית מיתר', en: 'Meitar Local Council', src: '/companies/local-authorities/logo-5.png' },
+  { he: 'קיבוץ קטורה', en: 'Kibbutz Ketura', src: '/companies/local-authorities/ketura_kibbutz.png' },
+  { he: 'קיבוץ אפק', en: 'Kibbutz Afek', src: '/companies/local-authorities/logoF.png' },
+];
+
+const WATER_AND_ECON_LOGOS: ClientLogo[] = [
+  { he: 'חברה כלכלית עמק חפר', en: 'Emek Hefer Economic Company', src: '/companies/water-authorities/logo-4.png' },
+  { he: 'חברה כלכלית אילת', en: 'Eilat Economic Company', src: '/companies/water-authorities/logo_eilat.png' },
+  { he: 'מיתב', en: 'Miteb', src: '/companies/water-authorities/logo-6.png' },
+  { he: 'הבאר השלישית', en: "HaBe'er HaShlishit", src: '/companies/water-authorities/logo.png' },
+  { he: 'מי אביבים', en: 'Mei Avivim', src: '/companies/water-authorities/logo_my_avivim.png' },
+  { he: 'קולחי גלבוע', en: 'Kolchei Gilboa', src: '/companies/water-authorities/logo.jpg' },
+  { he: 'חברה כלכלית ראש העין', en: "Rosh Ha'ayin Economic Company", src: '/companies/water-authorities/Logo-3.png' },
+  { he: 'מי רמת גן', en: 'Mei Ramat Gan', src: '/companies/water-authorities/מי-רמת-גן.jpg' },
+  { he: 'מי רעננה', en: "Mei Ra'anana", src: '/companies/water-authorities/Updatedlogo_raanana.jpg' },
+  { he: 'מי שיקמה', en: 'Mei Shikma', src: '/companies/water-authorities/מי-שיקמה-שירות-לקוחות-לוגו.jpg' },
+  { he: 'תאגיד מעיינות השרון', en: 'Mayanot HaSharon', src: '/companies/water-authorities/logosharon.svg' },
+];
+
+const CLIENT_LOGO_LIST = [...MUNICIPAL_LOGOS, ...WATER_AND_ECON_LOGOS];
 
 // Content Dictionary
 export const CONTENT = {
@@ -30,17 +66,27 @@ export const CONTENT = {
       titleHighlight: 'הארכיטקטים של העיר החכמה.',
       readMore: 'קרא עוד על החזון שלנו',
       readLess: 'חזרה לתצוגה מקוצרת',
-      description1: 'בעולם שבו העיר הופכת למרחב דיגיטלי מורכב, רשויות מקומיות זקוקות למצפן ברור. GZI Systems מחברת בין העולם הפיזי לדיגיטלי, בין הנדסה אזרחית לטכנולוגיית ענן.',
-      // This text replaces description1 when expanded
+      description1: 'במשך יותר מ־30 שנה גיל זילברמן וצוות GZI מלווים רשויות, ועדות תכנון, תאגידי מים וחברות פרטיות בהקמה ויישום של מערכות GIS, דיגיטציה וחדשנות דיגיטלית. החוזקה: חיבור בין הבנה עסקית-תפעולית ליכולות טכנולוגיות, כדי לבנות מערכות שעובדות באמת. משנת 2017 גיל משמש כיועץ מקצועי לרשויות ולוועדות תכנון בהקמת מערכות מידע, דיגיטציה וסקרים, וכתיבת מכרזים כולל דרישות סעיף 116.',
       descriptionExtendedTitle: 'מתודולוגיה וחדשנות',
-      descriptionExtended: `הצוות שלנו מורכב מבוגרי יחידות טכנולוגיות ומומחי תכנון ערים, היוצרים יחד סינרגיה נדירה. אנו מאמינים כי טכנולוגיה אינה המטרה, אלא האמצעי ליצירת מרחב עירוני יעיל, שקוף ונגיש לתושב.
-      
-      הגישה שלנו מבוססת על שלושה עקרונות ליבה:
-      1. עצמאות במידע - הרשות היא הבעלים הבלעדי של המידע שלה.
-      2. קוד פתוח וגמישות - הימנעות מ"חתונה קתולית" עם ספקים טכנולוגיים.
-      3. אינטגרציה מלאה - חיבור מערכות הליבה (גבייה, הנדסה, מוקד) למערכת אחת מסונכרנת.
-      
-      אנו מלווים את הרשות החל משלב האפיון, דרך כתיבת המכרזים וניהול הספקים, ועד להטמעה מלאה בשטח והדרכת העובדים.`,
+      descriptionExtended: `אנחנו מאמינים שטכנולוגיה היא אמצעי, לא מטרה. מודל עבודה מבוסס 7 שכבות מבטיח מכרזים מותאמים-לקוח, בחירת ספק נכונה והטמעה שעומדת בדרישות. בגישת GIS Active הלקוח שותף מלא לניהול ולעדכון המידע, כך שהמערכת נשארת חיה ומדויקת לאורך זמן.
+
+אודות:
+במשך יותר מ־30 שנה אני מלווה רשויות מקומיות, ועדות לתכנון ובנייה, תאגידי מים וחברות פרטיות בתכנון, הקמה ויישום של מערכות GIS ופתרונות ניהול מקרקעין. עם ניסיון שנצבר בעבודה עם מרבית הגופים הציבוריים בישראל, פיתחתי מומחיות ייחודית: חיבור בין הבנה עסקית-תפעולית לבין יכולות טכנולוגיות מתקדמות.
+ניסיון עמוק במערכות מידע לרשויות: יותר מ-25 שנה בהקמה ותפעול של מערכות מידע בארגונים ממשלתיים, עיריות, אגפי הנדסה וועדות תכנון ובנייה.
+
+משנת 2017 אני משמש כיועץ מקצועי לרשויות ולוועדות תכנון במגוון תחומים: תוכניות עבודה לשדרוג מערכות מידע והרחבת נגישות המידע לתושבים, ליווי ויישום מערכות לניהול ועדות לתכנון ובנייה, הטמעת מערכות מידע וקליטת נתונים, קידום חדשנות דיגיטלית וסקרים מקצועיים (כולל דרישות סעיף 116), ותמיכה בהגשת קולות קוראים ומענקים.
+
+משרד הייעוץ והצוות:
+משרד הייעוץ בניהולי מאגד צוות מומחים בעלי ניסיון רב בניהול תהליכים, ארגון מידע וביצוע פרויקטים רחבי היקף בתחום ה־GIS ובמערכות מידע מוניציפליות. החוזקה המרכזית היא היכולת לחבר בין העולם העסקי לצרכים הטכנולוגיים, להבין את המציאות הארגונית, ולבנות פתרון שמאזן בין פונקציונליות, תקציב ויכולת תפעולית.
+
+מה אנחנו עושים:
+אפיון והגדרת דרישות, בניית פתרון טכני ועסקי מותאם, ניהול פרויקטים בתחום מערכות מידע ו־GIS, ניתוח מידע והפקת תובנות לקבלת החלטות, ייעוץ וכתיבת מסמכי מכרז, ליווי בבחירת ספקים, ותמיכה מלאה בשלבי ההטמעה והתפעול.
+
+למי אנו מעניקים שירות:
+ערים ורשויות מקומיות, מועצות מקומיות ואזוריות, ועדות לתכנון ובנייה מרחביות, תאגידי מים, משרדי ממשלה, וחברות פרטיות העוסקות בניהול נכסים ותשתיות.
+
+הגישה שלנו ברורה:
+הטכנולוגיה היא אמצעי לא המטרה. בעולמות רוויי פתרונות, האתגר הוא לבחור את המערכת הנכונה לארגון — זו שמתאימה ליכולת התפעולית, לדרישות המקצועיות ולמסגרת התקציב, וממשיכה לייצר ערך לאורך זמן.`,
       features: [
         { icon: Shield, title: 'ניסיון מוכח ונטול אינטרסים', desc: 'ליווי עשרות רשויות בישראל באובייקטיביות מלאה.' },
         { icon: Server, title: 'אינטגרציה מערכתית', desc: 'חיבור מערכות הנדסה, גבייה ותפעול לפלטפורמה אחת.' },
@@ -48,7 +94,7 @@ export const CONTENT = {
       imageWidgets: {
         opt: 'אופטימיזציה עירונית',
         realtime: 'ניתוח נתונים בזמן אמת',
-        server: 'GIS Server Active'
+        server: 'GIS Active'
       }
     },
     stats: [
@@ -59,128 +105,172 @@ export const CONTENT = {
     services: {
       badge: 'תחומי התמחות',
       title: 'טכנולוגיה בשירות העיר',
-      subtitle: 'אנו מספקים מעטפת שירותים מלאה המשלבת ידע הנדסי, הבנה טכנולוגית עמוקה וניסיון עשיר בניהול פרויקטים לאומיים.',
+      subtitle: 'מעטפת מלאה: מכרזים, דיגיטציה ומיפוי, חדשנות דיגיטלית, GIS Active, פתרונות GIS ו-AI — כדי שהמערכות יעבדו באמת.',
       cta: 'קרא עוד',
       back: 'חזרה לרשימת השירותים',
       items: [
         {
-          title: 'AI & GIS Intelligence',
-          description: 'שילוב בינה מלאכותית במערכות מידע גיאוגרפיות. אנו הופכים מפות סטטיות למערכות קבלת החלטות חכמות.',
-          extendedDescription: 'אנו רותמים את כוחה של הבינה המלאכותית לניתוח כמויות עצומות של מידע גיאוגרפי. המערכות שלנו יודעות לזהות דפוסים במרחב, לחזות עומסי תנועה עתידיים, ולאתר חריגות בניה באופן אוטומטי באמצעות פענוח תצלומי אוויר. אנו מספקים לרשות "מוח דיגיטלי" שלומד את העיר ומשתפר מיום ליום.',
-          icon: Map,
-          features: ['ניתוח מרחבי מתקדם', 'Digital Twin', 'חיזוי עומסים ותשתיות']
-        },
-        {
-          title: 'Smart City Strategy',
-          description: 'בניית האסטרטגיה הדיגיטלית של העיר. מפת דרכים טכנולוגית המחברת בין התושב, העירייה והמרחב.',
-          extendedDescription: 'עיר חכמה היא לא רק חיישנים ומצלמות, אלא אסטרטגיה הוליסטית. אנו בונים עבור הרשות תוכנית אב מקיפה המגדירה כיצד הטכנולוגיה תשרת את היעדים העירוניים בעשור הקרוב. התהליך כולל מיפוי פערים, הגדרת תקציבים, וקביעת מדדי הצלחה (KPIs) לשיפור השירות לתושב והתייעלות תפעולית.',
-          icon: Cpu,
-          features: ['תוכניות אב למחשוב', 'IoT עירוני', 'מדיניות Open Data']
-        },
-        {
-          title: 'Tenders & Procurement',
-          description: 'ניהול מכרזים טכנולוגיים מורכבים. אנו כותבים את המפרטים שמגדירים את עתיד העיר.',
-          extendedDescription: 'רכש טכנולוגי ברשויות מקומיות הוא אתגר מורכב הדורש מומחיות ספציפית. אנו מלווים את הרשות בכתיבת מכרזים (RFP/RFI) מדויקים המבטיחים קבלת פתרונות איכותיים במחיר הוגן. אנו מנהלים את תהליך בחינת ההצעות, מבצעים בדיקות היתכנות טכנולוגיות (POC), ומבטיחים עמידה בסטנדרטים של אבטחת מידע.',
+          title: 'ייעוץ וכתיבת מסמכי מכרז',
+          description: 'מכרז מותאם-לקוח לפי מודל 7 שכבות: דרישות פונקציונליות, טכניות, ממשקים, לוחות זמנים ובקרת איכות.',
+          extendedDescription: `כתיבת מכרז למערכות מידע היא שלב קריטי. מכרז טוב הוא תוכנית עבודה מפורטת שמותאמת לארגון, לא מסמך מדף. אני כותב ומלווה מכרזים תוך הבנה עמוקה של התהליכים, הצוות והתקציב, ומבסס את העבודה על מודל 7 שכבות.
+
+מודל 7 השכבות:
+1. בחינת המידע הקיים – תמונת מצב אמיתית של מערכות, תהליכים, חסמים והזדמנויות.
+2. הגדרת דרישות מערכת – דרישות פונקציונליות וטכניות בשיתוף מלא עם הלקוח.
+3. בחינת ממשקים – בדיקה של כל המערכות הנוגעות לתהליך כדי למנוע "אי בודד" של מידע.
+4. כתיבת מסמכי מכרז – רקע, צרכים, לוחות זמנים, מנגנוני הערכה ועבודה משותפת עם יועצי ביטוח ומשפט.
+5. פרסום המכרז ובחירת ספק זוכה – מענה לשאלות, ניתוח הצעות והמלצה מנומקת.
+6. שלב ההקמה – גיבוש תוכנית עבודה ועמידה ביעדי המערכת.
+7. שלב ההטמעה ובקרת האיכות – בדיקות התאמה לדרישות, זיהוי פערים והנחיות לשיפורים.
+
+למה לבחור בשיטה?
+מכרז תפור בדיוק ללקוח, צמצום סיכונים וטעויות, ראייה מערכתית שמונעת הפתעות בהמשך, ושילוב בין ידע טכנולוגי וניסיון רב-שנים בעולם המכרזים הציבוריים.`,
           icon: FileText,
-          features: ['מכרזי ענן ו-SaaS', 'מיפוי פוטוגרמטרי', 'בקרת ספקים קפדנית']
+          features: ['מודל 7 שכבות', 'התאמה מלאה לארגון', 'ליווי פרסום ובחירת ספק']
         },
         {
-          title: 'Data Architecture',
-          description: 'תכנון ארכיטקטורת נתונים המאפשרת זרימת מידע חלקה בין אגפי העירייה השונים.',
-          extendedDescription: 'המידע הוא הנכס החשוב ביותר של הארגון. אנו מתכננים ומקימים אגמי נתונים (Data Lakes) ומחסני נתונים המרכזים מידע מכלל מערכות העירייה - גבייה, הנדסה, מוקד עירוני וחינוך. הארכיטקטורה שלנו מבטיחה "אמת אחת" (Single Source of Truth) ומאפשרת למנהלים לקבל תמונת מצב אמינה בזמן אמת.',
-          icon: Database,
-          features: ['אינטגרציית API', 'Data Warehousing', 'אבטחת סייבר מוניציפלית']
+          title: 'איסוף נתונים, דיגיטציה ומיפוי',
+          description: 'ליווי מלא לסקרי מים, ביוב, ניקוז, מאור, שילוט, ארנונה וחריגות בנייה – מאפיון ועד פיקוח בשטח.',
+          extendedDescription: `נתוני שטח מדויקים הם הבסיס לכל מערכת מידע איכותית. אני מלווה ארגונים בהקמה וביצוע של פרויקטים לאיסוף נתונים, דיגיטציה ומיפוי — משלב התכנון ועד אספקת נתונים תקניים, אמינים ומותאמים למערכת ה־GIS והמידע הארגוני.
+
+מה כולל הליווי המקצועי?
+- הגדרת דרישות ומפרט טכני: זיהוי הצורך המקצועי, פורמט הנתונים, רמת הדיוק והתקנים המחייבים, וההתאמה למערכות הלקוח.
+- ליווי מקצועי לביצוע סקרי שטח: פיקוח ובקרה על תשתיות מים, ביוב, ניקוז, מאור, שילוט, תמרור, סקרי ארנונה וחריגות בנייה (סעיף 116), כולל בדיקות איכות בשטח ועמידה בלוחות זמנים.
+- דיגיטציה, עיבוד וקליטת נתונים: ניקוי, תקנון והאחדת שכבות מידע, בדיקות טופולוגיה ורציפות, שילוב במערכות GIS קיימות והתאמה למבני נתונים של ספקים אחרים.
+- בקרת איכות סופית והטמעה בארגון: בדיקה מדוקדקת מול המפרט והדרישות המקוריות כדי לוודא שהמידע המדויק נכנס למערכת וניתן באמת לעבוד איתו.
+
+למה זה חשוב?
+איכות הנתונים משפיעה ישירות על החלטות תכנוניות, תפעול תשתיות, גביית ארנונה, ניהול נכסים, הצגת מידע לתושבים והעמידה בדרישות חוקיות. הליווי מונע נתונים חסרים או לא תקניים, חוסך עלויות כפולות ומייצר מידע שימושי מהיום הראשון.`,
+          icon: Layers,
+          features: ['מפרט מדויק', 'פיקוח ובקרת איכות', 'דיגיטציה ותקנון']
         },
         {
-          title: 'Urban Planning Tech',
-          description: 'מערכות רישוי זמין ופיקוח על הבנייה. אוטומציה של תהליכים הנדסיים מורכבים.',
-          extendedDescription: 'אנו מובילים את המהפכה הדיגיטלית במינהל ההנדסה. המערכות שלנו מייעלות את תהליכי הרישוי והפיקוח, מקצרות את זמני ההמתנה להיתרים, ומאפשרות שקיפות מלאה מול היזמים והתושבים. הפתרונות כוללים מערכות לניהול ועדות, חישוב שטחים אוטומטי, ובדיקה מרחבית ממוחשבת של תוכניות הגשה.',
+          title: 'חדשנות דיגיטלית ושיפור תהליכים',
+          description: 'אוטומציה, AI, וידאו אנליטיקה ותאורה חכמה לשיפור שירות לתושב ותפעול תשתיות.',
+          extendedDescription: `בעידן של עומסי עבודה, דרישות רגולטוריות וציפייה לשירות איכותי, חדשנות דיגיטלית היא תנאי לתפעול חכם. אני מלווה רשויות מקומיות בהטמעת כלים טכנולוגיים מתקדמים המותאמים ליכולות הארגון, למציאות התפעולית ולתקציב, עם דגש על שיפור תהליכים ולא על "התקנת גאדג'טים".
+
+מה כוללת החדשנות הדיגיטלית?
+- מערכות אוטומציה ו-Workflow: אוטומציה לפניות תושב, זרימות עבודה בין אגפים, סנכרון נתונים בין מערכות מידע וחיסכון בזמן ובכוח אדם.
+- בינה מלאכותית: ניתוח נתוני GIS, תשתיות וגבייה, כלי חיזוי לעומסים ותקלות, Chatbots ושירותים דיגיטליים לתושב, וכלים לזיהוי חריגות ושיפור בקרה.
+- וידאו אנליטיקה מתקדמת: זיהוי אירועים בזמן אמת, ניטור תנועה והולכי רגל, בטיחות וביטחון בעיר, ושילוב המידע במערכות GIS ובמאגרי מידע נוספים.
+- תאורה חכמה וניהול תשתיות עירוניות: בקרה מרחוק, שליטה באנרגיה, ניטור תקלות ושילוב חיישנים (סביבה, תנועה, חניה ועוד).
+
+ליווי הרשות בתהליך מלא:
+הגדרת הצורך והבנת היעדים האסטרטגיים, בחינת פתרונות טכנולוגיים בשוק, אפיון מפורט המותאם ליכולות הארגון, הכנת מפרטים ומסמכי מכרז, הטמעה בפועל וליווי שוטף, מדידה ושיפור תהליכים לאורך זמן. ניסיון עשיר בליווי רשויות מגוונות, שילוב בין טכנולוגיה לשיפור תהליכי עבודה וראייה מערכתית שמבטיחה שהפתרון משתלב היטב במערכות הקיימות.`,
+          icon: Cpu,
+          features: ['אוטומציה ו-Workflow', 'AI לשירות ותפעול', 'וידאו ותאורה חכמה']
+        },
+        {
+          title: 'ליווי והטמעת GIS (GIS Active)',
+          description: 'הטמעה שמעצימה את הלקוח לנהל ולעדכן מידע בעצמו, עם נהלים וכלים פשוטים.',
+          extendedDescription: `ארגונים פועלים בעולם מורכב עם ריבוי מידע ודרישות חוקיות. גישת GIS Active מאפשרת לרשות להיות שותפה מלאה בניהול המידע ולהפוך אותו לכלי החלטה, לא רק לאחסון נתונים.
+
+העקרונות המרכזיים:
+- הלקוח כגורם פעיל: עבודה עם כלים פשוטים לניהול המידע, עדכון עצמאי ואמון גבוה בנתונים.
+- מערכת שמפיקה תובנות: לא רק אגירת נתונים אלא תמיכה בקבלת החלטות, זיהוי מגמות ודוחות דינמיים.
+- פשטות כמפתח: מערכת אינטואיטיבית שמתאימה לתהליכי העבודה ומעודדת אימוץ רחב.
+- תחזוקת מידע לאורך זמן: נהלי עבודה, תהליכי עדכון שוטפים, שגרות בקרה וחלוקת אחריות בין תפקידים.
+
+מה כולל הליווי?
+אפיון וניתוח צרכים, התאמת פתרון טכני ותפעולי, יישום והטמעה עם הדרכות פרקטיות, הנחיות לעדכון נתונים ובניית נהלי עבודה, דשבורדים ומפות נושאיות, ובקרה ותחזוקה שוטפת. התוצאה: מידע עדכני ותובנות שמאפשרות החלטות נכונות ומהירות, פשטות שמביאה לאימוץ, ועצמאות עם תלות מינימלית בספקים.`,
           icon: Building2,
-          features: ['מערכות רישוי מקוון', 'ניהול ועדות', 'ניתוח תב"ע ממוחשב']
+          features: ['הדרכות ונהלים', 'עדכון רציף', 'בקרה ותחזוקה']
         },
         {
-          title: 'QA & Validation',
-          description: 'בקרת איכות לנתונים גיאוגרפיים. הבטחת אמינות המידע כבסיס לקבלת החלטות.',
-          extendedDescription: 'החלטות שגויות מתבססות על נתונים שגויים. אנו מפעילים מערך בקרת איכות קפדני (QA) לטיוב נתונים גיאוגרפיים ואלפא-נומריים. הצוותים שלנו מבצעים ולידציה לנתוני מדידות, מוודאים תקינות טופולוגית של שכבות GIS, ומבטיחים סנכרון מלא בין בסיסי הנתונים השונים ברשות.',
-          icon: ShieldCheck,
-          features: ['טיוב נתונים', 'בקרת מדידות', 'תיקוף כתובות']
+          title: 'מערכות GIS ופתרונות מידע מרחבי',
+          description: 'הקמה, שדרוג ויישום של מערכות GIS, פורטלים ודשבורדים בארגונים ציבוריים ופרטיים.',
+          extendedDescription: `מערכות GIS הן כלי מרכזי לניהול תשתיות, תכנון עירוני, ניהול נכסים ושיפור שירות לתושב. הצלחה מחייבת תכנון נכון, הבנת התהליכים הארגוניים ויכולת לייצר מידע אמין, עדכני וקל לתפעול.
+
+מה כולל הליווי בתחום ה־GIS?
+- הגדרת צרכים ואפיון מערכת: הבנת תהליכי העבודה, זיהוי שכבות מידע נדרשות, בחירת כלים טכנולוגיים, תשתיות, ארכיטקטורה ונהלי עבודה.
+- בניית פתרונות מידע מרחבי: מערכות פנימיות לאנשי מקצוע, פורטלים ונגישות מידע לתושבים, דשבורדים מרחביים ומודלים לניהול נכסים ותשתיות.
+- אינטגרציה וחיבור למערכות ארגוניות: הגדרת ממשקים, תהליכי סנכרון מידע, אחידות תקנים ותמיכה בתשתיות IT ו־DBA.
+- הטמעה והדרכות: הדרכות פרקטיות, פיתוח כלים פשוטים למשתמשים, התאמת המערכת לתפקידים שונים ובניית נהלים לשמירה על מידע חי ומתוחזק.
+- ניהול נתונים ושיפור איכותם: תחזוקת שכבות, בקרת איכות, ניהול Metadata, תקנון נתונים ותמיכה באיסוף נתונים ופרויקטי דיגיטציה.
+- הפקת תובנות וניתוח מרחבי: ניתוחים, דוחות ודשבורדים לתמיכה בקבלת החלטות על תשתיות, תכנון ותפעול.
+
+למה לבחור בנו?
+ניסיון של מעל 30 שנה ומאות פרויקטים ברחבי הארץ, היכרות עמוקה עם עולם הרשויות והתאגידים, מומחיות ב-ESRI, AutoDesk ופתרונות קוד פתוח, וגישה פרקטית שמסתכלת על תהליכי העבודה ומעצימה את הלקוח לאורך זמן.`,
+          icon: Database,
+          features: ['אינטגרציה עם מערכות', 'פורטלים ודשבורדים', 'ניהול נתונים ו-Metadata']
+        },
+        {
+          title: 'AI & GIS Intelligence',
+          description: 'שילוב AI עם GIS לניתוח מגמות, זיהוי דפוסים וחיזוי עומסים ואירועים.',
+          extendedDescription: `שילוב בין ניתוח מרחבי לבין בינה מלאכותית יוצר תובנות חכמות לתכנון ותפעול. ארגונים רבים מנצלים רק חלק מהמידע, והחיבור בין GIS ל-AI משנה את תמונת קבלת ההחלטות.
+
+מה כולל השירות?
+- ניתוח נתונים מבוסס AI: Machine Learning ו־Deep Learning לזיהוי דפוסים בתשתיות, עומסים ורישוי, גילוי חריגות, זיהוי מוקדי תקלות וסיווג נתונים מורכבים.
+- חיזוי (Predictive Analytics): מודלים להבנת התפתחות עומסים על מים, ביוב ותחבורה, צרכים תפעוליים (אחזקה, תאורה, ניקיון), הערכות לפי נתוני אוכלוסייה והדמיות תרחישים.
+- תובנות מרחביות חכמות: זיהוי מגמות, קבלת החלטות על עדיפויות השקעה, תכנון תשתיות וייעול תהליכים. התובנות מוצגות בדשבורדים אינטראקטיביים, מפות נושאיות ומערכות תומכות־החלטה.
+- שילוב נתוני וידאו אנליטיקה ו-AI Spatial: מיפוי אירועים בזמן אמת, ניטור תנועה והתנהגות משתמשי דרך, תיעוד תשתיות ותחזוקה חזויה.
+- אוטומציה מבוססת מיקום: דוחות אוטומטיים לפי מצב עדכני בשטח, ניהול תהליכי רישוי לפי מיקום, שליפה אוטומטית של נתונים וקישור בין תשתיות קיימות לאירועים ודיווחים.
+
+יתרונות והערך הייחודי:
+המידע עובד בשביל הארגון ולא רק נאגר במערכת, זמן קבלת ההחלטות מתקצר, נוצרת ראייה מערכתית שמאפשרת חיזוי בעיות ותכנון מבוסס נתונים. ניסיון של עשרות שנים ב-GIS, שילוב ידע טכנולוגי ותהליכי עבודה, הנגשת מידע מורכב ופיתוח מודלים מותאמים לכל רשות.`,
+          icon: Map,
+          features: ['Predictive Analytics', 'Spatial AI', 'אוטומציה מבוססת מיקום']
         }
       ]
     },
     projects: {
       badge: 'תיק עבודות',
       title: 'פרויקטים נבחרים',
-      subtitle: 'מערכות שו"ב מתקדמות, מיפוי עירוני חכם ופתרונות ענן. הנה הצצה לעשייה שלנו בשטח.',
+      subtitle: 'דוגמאות מליווי רשויות, תאגידי מים וארגונים פרטיים — משלב הסקר ועד GIS Active ו-AI.',
       next: 'הבא',
       prev: 'הקודם',
       items: [
         {
-          title: 'Digital Twin תל אביב',
-          category: 'חדשנות אורבנית',
-          description: 'מיפוי תלת-ממדי מלא של העיר לניהול תשתיות וסימולציות תכנון ובנייה בזמן אמת.',
-          image: 'https://images.unsplash.com/photo-1543965860-82ed7d542cc4?q=80&w=2060&auto=format&fit=crop',
-          tags: ['3D Mapping', 'AI Analysis', 'Urban Planning']
+          title: 'ניהול סקר לאיתור עבירות בנייה — עיריית הרצליה',
+          category: 'Data',
+          description: 'בחינת שינויים בין צילומי אוויר לאיתור חריגות בנייה, כולל בקרה וטיוב נתונים.',
+          image: 'https://images.unsplash.com/photo-1470246973918-29a93221c455?q=80&w=1600&auto=format&fit=crop',
+          tags: ['Data', 'QA', 'Planning']
         },
         {
-          title: 'מערכת שו"ב מטרופולינית',
-          category: 'שליטה ובקרה',
-          description: 'הקמת מרכז שליטה אחוד המשלב נתוני תנועה, ביטחון ותפעול לפלטפורמה אחת חכמה.',
-          image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop',
-          tags: ['IoT', 'Big Data', 'Security']
+          title: 'הקמת מערכת GIS ארגונית — עיריית באר יעקב',
+          category: 'Application',
+          description: 'GIS ארגוני לכל מחלקות העירייה: אפיון, יישום, אינטגרציה והדרכות משתמשים.',
+          image: 'https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?q=80&w=1600&auto=format&fit=crop',
+          tags: ['GIS', 'Implementation', 'Training']
         },
         {
-          title: 'טרנספורמציית ענן ממשלתית',
-          category: 'תשתיות IT',
-          description: 'ליווי משרד ממשלתי במעבר תשתיות ה-GIS לסביבת ענן היברידית מאובטחת.',
-          image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop',
-          tags: ['Cloud Computing', 'Cyber Security', 'Migration']
+          title: 'הסבת נתונים והקמת GIS — מי אביבים',
+          category: 'Application',
+          description: 'הסבת נתונים ממערכת קיימת והקמת GIS ארגוני לניהול עצמאי של נתוני התאגיד.',
+          image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600&auto=format&fit=crop',
+          tags: ['Water Utility', 'Data Migration', 'GIS']
         },
         {
-          title: 'פלטפורמת היתרי בנייה',
-          category: 'הנדסה ורישוי',
-          description: 'אוטומציה מלאה של תהליכי היתר הבנייה, כולל בדיקה מרחבית אוטומטית וחישוב אגרות.',
-          image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2031&auto=format&fit=crop',
-          tags: ['Automation', 'Engineering', 'GovTech']
+          title: 'יישום GIS Active — עיריית קריית מלאכי',
+          category: 'Application',
+          description: 'העצמת משתמשים, חיבור מקורות מידע ובניית מאגר עירוני מתועד בגישת GIS Active.',
+          image: 'https://images.unsplash.com/photo-1529429617124-aee1f1650a5d?q=80&w=1600&auto=format&fit=crop',
+          tags: ['GIS Active', 'Data Hub', 'Process']
         },
         {
-          title: 'ניהול נכסים מוניציפלי',
-          category: 'כלכלה אורבנית',
-          description: 'מערכת GIS לניהול ותמחור נדל"ן עירוני, שטחי מסחר ושלטי חוצות להגדלת הכנסות.',
-          image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop',
-          tags: ['Real Estate', 'GIS', 'Finance']
+          title: 'ויזואליזציה של נתונים — עיריית אילת',
+          category: 'Data',
+          description: 'הפיכת מידע גולמי לסיפור ברור: מפות, דשבורדים ותרשימים שמזהים מגמות.',
+          image: 'https://images.unsplash.com/photo-1540544666204-0ce743321e11?q=80&w=1600&auto=format&fit=crop',
+          tags: ['Dashboards', 'Visualization', 'Insights']
         },
         {
-          title: 'מערך רמזורים חכם',
-          category: 'תחבורה חכמה',
-          description: 'אופטימיזציה של תנועה עירונית באמצעות בינה מלאכותית וחיישני IoT בצמתים מרכזיים.',
-          image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=2070&auto=format&fit=crop',
-          tags: ['Smart Mobility', 'AI', 'Traffic']
+          title: 'סקר איתור תשתיות — מי רמת גן',
+          category: 'Data & Application',
+          description: 'איתור מלא של קווי מים וביוב, ניקוי מעל 600 ק״מ נתונים ושילוב ב-CRM הארגוני.',
+          image: 'https://images.unsplash.com/photo-1503389152951-9f343605f61e?q=80&w=1600&auto=format&fit=crop',
+          tags: ['Water Utility', 'Data Collection', 'Integration']
         }
       ]
     },
     clients: {
       title: 'הלקוחות שלנו',
       subtitle: 'גאים לשרת את הרשויות והגופים המובילים בישראל',
-      items: [], // Deprecated in favor of categories below
+      items: CLIENT_LOGO_LIST,
       categories: [
-        {
-          name: 'רשויות מקומיות',
-          items: [
-            'עיריית אילת', 'עיריית באר יעקב', 'עיריית שדרות', 'מועצה מקומית שדות דן',
-            'מועצה מקומית הגלבוע', 'מועצה מקומית בית אל', 'ועדה לתכנון ובניה זמורה',
-            'עיריית הרצליה', 'ועדה לתכנון ובניה מצפה אפק', 'ועדה לתכנון ובניה רכס הכרמל',
-            'מועצה אזורית חבל אילות', 'מועצה מקומית אבן יהודה', 'מועצה אזורית לכיש',
-            'מועצה מקומית מיתר', 'קיבוץ קטורה', 'קיבוץ אפק'
-          ]
-        },
-        {
-          name: 'תאגידי מים וביוב וחברות כלכליות',
-          items: [
-            'חברה כלכלית עמק חפר', 'חברה כלכלית אילת', 'מיתב', 'הבאר השלישית',
-            'מי אביבים', 'קולחי גלבוע', 'חברה כלכלית ראש העין', 'מי רמת גן',
-            'מי רעננה', 'מי שיקמה', 'תאגיד מעיינות השרון'
-          ]
-        }
+        { name: 'רשויות מקומיות', items: MUNICIPAL_LOGOS },
+        { name: 'תאגידי מים וביוב וחברות כלכליות', items: WATER_AND_ECON_LOGOS }
       ],
       bannerTitle: 'הצטרפו למהפכה העירונית',
       bannerText: 'המומחים שלנו ממתינים לסייע לכם באתגר הבא.',
@@ -193,6 +283,10 @@ export const CONTENT = {
       email: 'דואר אלקטרוני',
       phone: 'טלפון ישיר',
       address: 'מטה החברה',
+      emailAddress: 'gil@gzi.co.il',
+      phoneNumber: '052-5656246',
+      phoneHref: '+972525656246',
+      addressText: 'אריאל שרון 8, אור יהודה',
       formTitle: 'תיאום פגישה / ייעוץ',
       labels: {
         name: 'שם מלא',
@@ -236,24 +330,19 @@ export const CONTENT = {
       titleHighlight: 'We Are Smart City Architects.',
       readMore: 'Read More About Our Vision',
       readLess: 'Back to Summary',
-      description1: 'In a world where the city becomes a complex digital space, municipalities need a clear compass. GZI Systems connects the physical world to the digital, from civil engineering to cloud technology.',
+      description1: 'For over 30 years, Gil Zilberman and the GZI team have guided municipalities, planning committees, water utilities, and private firms to build GIS, digitization, and innovation programs that truly work.',
       descriptionExtendedTitle: 'Methodology & Innovation',
-      descriptionExtended: `Our team consists of technology unit veterans and urban planning experts, creating a rare synergy. We believe technology is not the goal, but the means to create an efficient, transparent, and accessible urban space.
+      descriptionExtended: `Technology is the means, not the goal. We use a 7-layer model for tenders and implementation, and GIS Active to keep the client an active owner of data and workflows so systems stay accurate and alive.
 
-      Our approach is based on three core principles:
-      1. Data Independence - The authority is the sole owner of its data.
-      2. Open Source & Flexibility - Avoiding "vendor lock-in" scenarios.
-      3. Full Integration - Connecting core systems (billing, engineering, hotline) into one synchronized platform.
-
-      We accompany the authority from the characterization stage, through tender writing and vendor management, to full implementation in the field and employee training.`,
+We define needs, write executable specs, run tenders and vendor selection, and implement GIS, automation, AI, video analytics, and smart lighting — all tied to real operational needs and measurable outcomes.`,
       features: [
-        { icon: Shield, title: 'Proven & Unbiased Experience', desc: 'Guiding dozens of authorities in Israel with full objectivity.' },
-        { icon: Server, title: 'System Integration', desc: 'Connecting engineering, billing, and operations into one platform.' },
+        { icon: Shield, title: 'Proven & Unbiased Experience', desc: 'Dozens of authorities and enterprises over three decades.' },
+        { icon: Server, title: 'System Integration', desc: 'Simple processes, clear playbooks, and living systems.' },
       ],
       imageWidgets: {
         opt: 'Urban Optimization',
         realtime: 'Real-time Analysis',
-        server: 'GIS Server Active'
+        server: 'GIS Active'
       }
     },
     stats: [
@@ -264,137 +353,128 @@ export const CONTENT = {
     services: {
       badge: 'Expertise',
       title: 'Technology Serving the City',
-      subtitle: 'We provide a full service envelope combining engineering knowledge, deep tech understanding, and rich experience in national projects.',
+      subtitle: 'Tenders, digitization and mapping, digital innovation, GIS Active, spatial solutions, and AI — one partner to make systems work.',
       cta: 'Read More',
       back: 'Back to Services',
       items: [
         {
-          title: 'AI & GIS Intelligence',
-          description: 'Integrating AI into GIS systems. We turn static maps into smart decision-making systems.',
-          extendedDescription: 'We harness the power of AI to analyze vast amounts of geographic data. Our systems identify spatial patterns, predict future traffic loads, and automatically detect construction anomalies using aerial imagery analysis. We provide the authority with a "digital brain" that learns the city and improves daily.',
-          icon: Map,
-          features: ['Advanced Spatial Analysis', 'Digital Twin', 'Load & Infrastructure Prediction']
-        },
-        {
-          title: 'Smart City Strategy',
-          description: 'Building the city\'s digital strategy. A technological roadmap connecting residents, municipality, and space.',
-          extendedDescription: 'A smart city is not just sensors and cameras, but a holistic strategy. We build a comprehensive master plan for the authority defining how technology will serve urban goals in the coming decade. The process includes gap analysis, budget definition, and KPI setting for improved resident service and operational efficiency.',
-          icon: Cpu,
-          features: ['IT Master Plans', 'Urban IoT', 'Open Data Policy']
-        },
-        {
-          title: 'Tenders & Procurement',
-          description: 'Managing complex tech tenders. We write the specifications that define the city\'s future.',
-          extendedDescription: 'Technological procurement in local authorities is a complex challenge requiring specific expertise. We guide the authority in writing precise tenders (RFP/RFI) ensuring quality solutions at fair prices. We manage the proposal review process, conduct technological feasibility checks (POC), and ensure information security standards compliance.',
+          title: 'Tender consulting & RFP authoring',
+          description: 'Client-tailored tenders using a 7-layer model: functional and technical needs, integrations, timelines, and QA.',
+          extendedDescription: 'Define needs, write precise and executable requirements, publish and support vendor selection. The goal: a document the organization understands and can implement without surprises.',
           icon: FileText,
-          features: ['Cloud & SaaS Tenders', 'Photogrammetric Mapping', 'Strict Vendor Control']
+          features: ['7-layer framework', 'Client-specific fit', 'Vendor selection support']
         },
         {
-          title: 'Data Architecture',
-          description: 'Planning data architecture enabling smooth information flow between municipal departments.',
-          extendedDescription: 'Data is the organization\'s most valuable asset. We plan and establish Data Lakes and Data Warehouses centering information from all municipal systems - billing, engineering, municipal hotline, and education. Our architecture ensures a "Single Source of Truth" enabling managers to receive reliable real-time status updates.',
-          icon: Database,
-          features: ['API Integration', 'Data Warehousing', 'Municipal Cyber Security']
+          title: 'Data collection, digitization & mapping',
+          description: 'Full guidance for surveys (water, sewer, drainage, lighting, signage, tax, building deviations) from specs to field QA.',
+          extendedDescription: 'Technical specs, contractor oversight, on-site quality checks, cleaning and standardizing layers, topology tests, and GIS ingestion. Focus: standardized, reliable data.',
+          icon: Layers,
+          features: ['Precise specs', 'Field QA', 'Digitization & normalization']
         },
         {
-          title: 'Urban Planning Tech',
-          description: 'Online licensing and construction supervision systems. Automating complex engineering processes.',
-          extendedDescription: 'We lead the digital revolution in engineering administration. Our systems streamline licensing and supervision processes, shorten permit waiting times, and enable full transparency with developers and residents. Solutions include committee management systems, automatic area calculation, and computerized spatial checking of submission plans.',
+          title: 'Digital innovation & process improvement',
+          description: 'Automation, AI, video analytics, and smart lighting to improve citizen services and infrastructure operations.',
+          extendedDescription: 'Need-driven solution selection, specs, and implementation support: RPA/Workflow, predictive analytics, sensors and cameras, and smart lighting for efficiency and safety.',
+          icon: Cpu,
+          features: ['Automation & workflow', 'AI for ops & service', 'Video & smart lighting']
+        },
+        {
+          title: 'GIS implementation (GIS Active)',
+          description: 'Implementation that empowers the client to manage and update data with simple tools and clear playbooks.',
+          extendedDescription: 'GIS Active: training, procedures, ongoing updates, dashboards, and insights. Ensures the system stays accurate and supports decisions over time.',
           icon: Building2,
-          features: ['Online Licensing', 'Committee Management', 'Computerized Urban Planning']
+          features: ['Playbooks & training', 'Ongoing updates', 'Quality control']
         },
         {
-          title: 'QA & Validation',
-          description: 'Quality assurance for geographic data. Ensuring information reliability as a basis for decision making.',
-          extendedDescription: 'Wrong decisions are based on wrong data. We operate a strict Quality Assurance (QA) array for geographic and alphanumeric data improvement. Our teams validate measurement data, ensure topological correctness of GIS layers, and ensure full synchronization between different municipal databases.',
-          icon: ShieldCheck,
-          features: ['Data Cleansing', 'Measurement Control', 'Address Validation']
+          title: 'GIS platforms & spatial solutions',
+          description: 'Setup, upgrades, and implementation of GIS, portals, and dashboards for public and private organizations.',
+          extendedDescription: 'Define needs, choose tools, integrate with permitting, tax, water, and CRM systems; train users and set maintenance and data governance. Goal: effective, simple, accurate GIS.',
+          icon: Database,
+          features: ['Enterprise integration', 'Portals & dashboards', 'Data & metadata governance']
+        },
+        {
+          title: 'AI & GIS Intelligence',
+          description: 'Blend AI with GIS to detect patterns, predict loads, and automate location-based actions.',
+          extendedDescription: 'Machine Learning and Deep Learning for spatial analysis, scenario forecasting, video-analytics fusion, and decision-ready dashboards. Data that turns into insight and action.',
+          icon: Map,
+          features: ['Predictive analytics', 'Spatial AI', 'Location-based automation']
         }
       ]
     },
     projects: {
       badge: 'Portfolio',
       title: 'Selected Projects',
-      subtitle: 'Advanced C&C systems, smart urban mapping, and cloud solutions. Here is a glimpse of our work in the field.',
+      subtitle: 'Work with authorities, water utilities, and private orgs — from surveys to GIS Active and AI.',
       next: 'Next',
       prev: 'Previous',
       items: [
         {
-          title: 'Digital Twin Tel Aviv',
-          category: 'Urban Innovation',
-          description: 'Full 3D mapping of the city for infrastructure management and real-time planning simulations.',
-          image: 'https://images.unsplash.com/photo-1543965860-82ed7d542cc4?q=80&w=2060&auto=format&fit=crop',
-          tags: ['3D Mapping', 'AI Analysis', 'Urban Planning']
+          title: 'Building-violation survey — Herzliya Municipality',
+          category: 'Data',
+          description: 'Change detection on aerial imagery to spot construction violations, including QA and data curation.',
+          image: 'https://images.unsplash.com/photo-1470246973918-29a93221c455?q=80&w=1600&auto=format&fit=crop',
+          tags: ['Data', 'QA', 'Planning']
         },
         {
-          title: 'Metropolitan C&C System',
-          category: 'Command & Control',
-          description: 'Establishing a unified control center integrating traffic, security, and operations data into one smart platform.',
-          image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop',
-          tags: ['IoT', 'Big Data', 'Security']
+          title: 'Enterprise GIS — Beer Yaakov Municipality',
+          category: 'Application',
+          description: 'City-wide GIS: scoping, implementation, integrations, and user training for all departments.',
+          image: 'https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?q=80&w=1600&auto=format&fit=crop',
+          tags: ['GIS', 'Implementation', 'Training']
         },
         {
-          title: 'Government Cloud Transformation',
-          category: 'IT Infrastructure',
-          description: 'Guiding a government ministry in migrating GIS infrastructures to a secure hybrid cloud environment.',
-          image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop',
-          tags: ['Cloud Computing', 'Cyber Security', 'Migration']
+          title: 'Data migration & GIS rollout — Mei Avivim',
+          category: 'Application',
+          description: 'Migrating from a legacy system and deploying an enterprise GIS for independent utility data management.',
+          image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600&auto=format&fit=crop',
+          tags: ['Water Utility', 'Data Migration', 'GIS']
         },
         {
-          title: 'Permit Platform',
-          category: 'Engineering & Licensing',
-          description: 'Full automation of building permit processes, including automatic spatial checking and fee calculation.',
-          image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2031&auto=format&fit=crop',
-          tags: ['Automation', 'Engineering', 'GovTech']
+          title: 'GIS Active rollout — Kiryat Malachi',
+          category: 'Application',
+          description: 'Implementing GIS Active: empowering users, connecting data sources, and building a documented civic hub.',
+          image: 'https://images.unsplash.com/photo-1529429617124-aee1f1650a5d?q=80&w=1600&auto=format&fit=crop',
+          tags: ['GIS Active', 'Data Hub', 'Process']
         },
         {
-          title: 'Municipal Asset Management',
-          category: 'Urban Economy',
-          description: 'GIS system for managing and pricing municipal real estate, commercial areas, and billboards.',
-          image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop',
-          tags: ['Real Estate', 'GIS', 'Finance']
+          title: 'Data visualization — Eilat Municipality',
+          category: 'Data',
+          description: 'Turning raw information into clear stories: maps, dashboards, and charts that surface trends.',
+          image: 'https://images.unsplash.com/photo-1540544666204-0ce743321e11?q=80&w=1600&auto=format&fit=crop',
+          tags: ['Dashboards', 'Visualization', 'Insights']
         },
         {
-          title: 'Smart Traffic Grid',
-          category: 'Smart Mobility',
-          description: 'Optimizing urban traffic using AI and IoT sensors at key intersections.',
-          image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=2070&auto=format&fit=crop',
-          tags: ['Smart Mobility', 'AI', 'Traffic']
+          title: 'Infrastructure survey — Mei Ramat Gan',
+          category: 'Data & Application',
+          description: 'Full survey of water and sewer lines, cleaning 600km of data, and integrating with the corporate CRM.',
+          image: 'https://images.unsplash.com/photo-1503389152951-9f343605f61e?q=80&w=1600&auto=format&fit=crop',
+          tags: ['Water Utility', 'Data Collection', 'Integration']
         }
       ]
     },
     clients: {
       title: 'Our Clients',
       subtitle: 'Proud to serve Israel\'s leading authorities and organizations',
-      items: [
-        'Tel Aviv-Yafo', 'Rishon LeZion', 'Herzliya', 'Holon', 'Ra\'anana', 'Netanya', 
-        'Ministry of Interior', 'RAMI', 'Netivei Israel', 'Ministry of Housing', 'MAPI', 'Modi\'in'
-      ],
+      items: CLIENT_LOGO_LIST,
       categories: [
-        {
-          name: 'Municipalities',
-          items: [
-            'Tel Aviv-Yafo', 'Rishon LeZion', 'Herzliya', 'Holon', 'Ra\'anana', 'Netanya', 'Modi\'in'
-          ]
-        },
-        {
-          name: 'Government & Infrastructure',
-          items: [
-            'Ministry of Interior', 'RAMI', 'Netivei Israel', 'Ministry of Housing', 'MAPI'
-          ]
-        }
+        { name: 'Municipalities', items: MUNICIPAL_LOGOS },
+        { name: 'Water Utilities & Economic Companies', items: WATER_AND_ECON_LOGOS }
       ],
       bannerTitle: 'Ready to join the success?',
       bannerText: 'Join dozens of authorities that have already made the technological leap.',
       bannerCta: 'Contact Us'
     },
     contact: {
-      title: 'Let\'s Plan the Future.',
+      title: 'Let’s Plan the Future.',
       subtitle: 'Want to hear how our systems can save resources and improve resident service?',
       highlight: 'Coffee is on us.',
       email: 'Email',
       phone: 'Direct Phone',
       address: 'Headquarters',
+      emailAddress: 'gil@gzi.co.il',
+      phoneNumber: '+972-52-565-6246',
+      phoneHref: '+972525656246',
+      addressText: '8 Ariel Sharon St, Or Yehuda',
       formTitle: 'Schedule Meeting / Consult',
       labels: {
         name: 'Full Name',
