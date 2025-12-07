@@ -39,12 +39,11 @@ const About: React.FC = () => {
                {/* Floating Overlay Widgets - Hide when expanded to clean up UI */}
                <div className={`absolute bottom-8 right-8 bg-white/95 backdrop-blur-md p-5 rounded-xl shadow-lg border border-white/50 max-w-[260px] animate-float transition-all duration-500 ${isExpanded ? 'hidden' : 'opacity-100'}`}>
                  <div className="flex items-center gap-3 mb-3">
-                   <div className="p-2 bg-green-100 rounded-lg text-green-600">
+                 <div className="p-2 bg-green-100 rounded-lg text-green-600">
                      <FeatureIcon1 size={20} />
                    </div>
                    <div>
-                     <p className="text-sm font-bold text-slate-800">{t.imageWidgets.opt}</p>
-                     <p className="text-[10px] text-slate-500">{t.imageWidgets.realtime}</p>
+                    <p className="text-sm font-bold text-slate-800">{t.imageWidgets.realtime}</p>
                    </div>
                  </div>
                  <div className="flex items-center gap-1 h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">

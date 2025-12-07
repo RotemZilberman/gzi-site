@@ -66,15 +66,6 @@ const Projects: React.FC = () => {
                 <p className="text-slate-600 mb-4 text-sm leading-relaxed">
                   {project.description}
                 </p>
-                
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.tags.map((tag, i) => (
-                    <span key={i} className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2 py-1 rounded md uppercase tracking-wide">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
           ))}

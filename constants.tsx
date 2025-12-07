@@ -92,7 +92,6 @@ export const CONTENT = {
         { icon: Server, title: 'אינטגרציה מערכתית', desc: 'חיבור מערכות הנדסה, גבייה ותפעול לפלטפורמה אחת.' },
       ],
       imageWidgets: {
-        opt: 'אופטימיזציה עירונית',
         realtime: 'ניתוח נתונים בזמן אמת',
         server: 'GIS Active'
       }
@@ -340,7 +339,6 @@ We define needs, write executable specs, run tenders and vendor selection, and i
         { icon: Server, title: 'System Integration', desc: 'Simple processes, clear playbooks, and living Consulting.' },
       ],
       imageWidgets: {
-        opt: 'Urban Optimization',
         realtime: 'Real-time Analysis',
         server: 'GIS Active'
       }
