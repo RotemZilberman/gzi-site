@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../LanguageContext';
 import { CONTENT } from '../constants';
+import { ClientLogo } from '../types';
 
-const ClientBox: React.FC<{ items: string[] }> = ({ items }) => {
+const ClientBox: React.FC<{ items: ClientLogo[]; language: 'he' | 'en' }> = ({ items, language }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    // Random interval between 4s and 8s to make grid look organic
+    if (items.length <= 1) return;
+
     const intervalTime = Math.random() * 4000 + 4000;
     
     const interval = setInterval(() => {
       setIsFading(true);
       setTimeout(() => {
-        // Pick random next item that isn't current
         let nextIndex;
         do {
             nextIndex = Math.floor(Math.random() * items.length);
@@ -21,19 +22,28 @@ const ClientBox: React.FC<{ items: string[] }> = ({ items }) => {
         
         setCurrentIndex(nextIndex);
         setIsFading(false);
-      }, 500); // Wait for fade out
+      }, 500);
     }, intervalTime);
 
     return () => clearInterval(interval);
   }, [items, currentIndex]);
 
+  const currentLogo = items[currentIndex];
+  const label = language === 'he' ? currentLogo.he : currentLogo.en;
+
   return (
-    <div className="h-16 flex items-center justify-center p-2">
-      <span 
-        className={`text-sm md:text-base font-medium text-slate-400 text-center transition-all duration-500 whitespace-nowrap overflow-hidden text-ellipsis ${isFading ? 'opacity-0 blur-sm scale-95' : 'opacity-100 blur-0 scale-100'}`}
+    <div className="h-20 flex items-center justify-center p-3">
+      <div
+        className={`h-full w-full flex items-center justify-center transition-all duration-500 ${isFading ? 'opacity-0 blur-sm scale-95' : 'opacity-100 blur-0 scale-100'}`}
       >
-        {items[currentIndex]}
-      </span>
+        <img
+          src={currentLogo.src}
+          alt={label}
+          className="max-h-12 max-w-[150px] object-contain"
+          loading="lazy"
+        />
+      </div>
+      <span className="sr-only">{label}</span>
     </div>
   );
 };
@@ -41,20 +51,18 @@ const ClientBox: React.FC<{ items: string[] }> = ({ items }) => {
 const ClientSwapper: React.FC = () => {
   const { language } = useLanguage();
   const categories = CONTENT[language].clients.categories;
+  const getBucketCount = (length: number) => Math.min(6, Math.max(1, length));
   
-  // Create chunks for the grid. 
-  // We want to show X boxes, but cycle through Y items.
-  // We will distribute the full list of items into X buckets.
-  const createBuckets = (items: string[], count: number) => {
-    const buckets: string[][] = Array.from({ length: count }, () => []);
+  const createBuckets = (items: ClientLogo[], count: number) => {
+    const buckets: ClientLogo[][] = Array.from({ length: count }, () => []);
     items.forEach((item, index) => {
       buckets[index % count].push(item);
     });
     return buckets;
   };
 
-  const muniBuckets = createBuckets(categories[0].items, 6); // 6 boxes for munis
-  const corpBuckets = createBuckets(categories[1].items, 6); // 6 boxes for corps
+  const muniBuckets = createBuckets(categories[0].items, getBucketCount(categories[0].items.length));
+  const corpBuckets = createBuckets(categories[1].items, getBucketCount(categories[1].items.length));
 
   return (
     <section className="bg-white border-b border-slate-100 py-16">
@@ -62,23 +70,20 @@ const ClientSwapper: React.FC = () => {
         
         <div className="flex flex-col gap-12">
           
-          {/* Municipalities Row */}
           <div>
             <h3 className="text-sm font-bold text-slate-300 uppercase tracking-widest mb-4">{categories[0].name}</h3>
-            {/* Clean Grid - No borders, no backgrounds */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-4">
               {muniBuckets.map((bucket, idx) => (
-                <ClientBox key={`muni-${idx}`} items={bucket} />
+                <ClientBox key={`muni-${idx}`} items={bucket} language={language} />
               ))}
             </div>
           </div>
 
-          {/* Corps Row */}
           <div>
             <h3 className="text-sm font-bold text-slate-300 uppercase tracking-widest mb-4">{categories[1].name}</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-4">
               {corpBuckets.map((bucket, idx) => (
-                <ClientBox key={`corp-${idx}`} items={bucket} />
+                <ClientBox key={`corp-${idx}`} items={bucket} language={language} />
               ))}
             </div>
           </div>

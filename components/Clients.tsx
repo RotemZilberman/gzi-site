@@ -15,7 +15,6 @@ const Clients: React.FC = () => {
           <p className="text-lg text-slate-600">{t.subtitle}</p>
         </div>
 
-        {/* Categories */}
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {t.categories.map((category, idx) => (
             <div key={idx} className="bg-slate-50 rounded-3xl p-8 border border-slate-100">
@@ -25,23 +24,28 @@ const Clients: React.FC = () => {
               </h3>
               
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                {category.items.map((client, clientIdx) => (
-                  <div key={clientIdx} className="aspect-[4/3] bg-white rounded-xl border border-slate-200 flex flex-col items-center justify-center p-4 text-center hover:border-violet-300 hover:shadow-md transition-all group cursor-default">
-                    {/* Visual Placeholder for Logo */}
-                    <div className="w-10 h-10 mb-3 rounded-full bg-slate-100 text-slate-400 group-hover:bg-violet-50 group-hover:text-violet-600 flex items-center justify-center transition-colors">
-                       {idx === 0 ? <Building2 size={20} /> : <Landmark size={20} />}
+                {category.items.map((client, clientIdx) => {
+                  const label = language === 'he' ? client.he : client.en;
+                  
+                  return (
+                    <div key={clientIdx} className="aspect-[4/3] bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl border border-slate-200 flex flex-col items-center justify-center p-4 text-center hover:border-violet-300 hover:shadow-lg transition-all group cursor-default overflow-hidden">
+                      <div className="w-24 h-20 mb-2 flex items-center justify-center relative">
+                        <img 
+                          src={client.src}
+                          alt={label}
+                          className="max-w-full max-h-full object-contain filter grayscale-[20%] brightness-95 contrast-110 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-300"
+                          style={{ mixBlendMode: 'multiply' }}
+                        />
+                      </div>
+                      <span className="sr-only">{label}</span>
                     </div>
-                    <span className="text-sm font-bold text-slate-700 group-hover:text-violet-900 transition-colors leading-tight">
-                      {client}
-                    </span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}
         </div>
         
-        {/* Bottom Banner */}
         <div className="mt-16 max-w-4xl mx-auto bg-gradient-to-r from-violet-600 to-cyan-600 rounded-2xl p-8 md:p-12 text-center text-white relative overflow-hidden shadow-2xl">
            <div className="absolute inset-0 bg-tech-grid opacity-20"></div>
            <div className="relative z-10">

@@ -4,10 +4,9 @@ import { CONTENT } from '../constants';
 
 const LogoTicker: React.FC = () => {
   const { language } = useLanguage();
-  const clients = CONTENT[language].clients.items;
-  
-  // Duplicate list to create seamless infinite scroll
-  const duplicatedClients = [...clients, ...clients, ...clients];
+  const categories = CONTENT[language].clients.categories;
+  const clients = categories.flatMap((category) => category.items);
+  const duplicatedClients = [...clients, ...clients];
 
   return (
     <section className="bg-white border-b border-slate-100 py-10 overflow-hidden relative select-none">
@@ -21,10 +20,13 @@ const LogoTicker: React.FC = () => {
             key={index} 
             className="flex items-center mx-12 opacity-40 hover:opacity-100 transition-opacity duration-300 cursor-default"
           >
-            {/* Minimal Typography Logo Style */}
-            <span className="text-2xl font-black text-brand-black tracking-tight whitespace-nowrap">
-              {client}
-            </span>
+            <img 
+              src={client.src} 
+              alt={language === 'he' ? client.he : client.en} 
+              className="h-10 w-auto object-contain"
+              loading="lazy"
+            />
+            <span className="sr-only">{language === 'he' ? client.he : client.en}</span>
           </div>
         ))}
       </div>
@@ -32,7 +34,7 @@ const LogoTicker: React.FC = () => {
       <style>{`
         @keyframes scroll-left {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-33.33%); }
+          100% { transform: translateX(-50%); }
         }
         .animate-scroll-left {
           animation: scroll-left 40s linear infinite;

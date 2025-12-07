@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Globe, Layers } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import { CONTENT } from '../constants';
 
@@ -19,7 +19,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { label: navContent.about, href: '#about' },
     { label: navContent.services, href: '#services' },
     { label: navContent.projects, href: '#projects' },
-    { label: navContent.clients, href: '#clients' },
     { label: navContent.contact, href: '#contact' },
   ];
 
@@ -31,6 +30,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (href: string) => {
+    const target = document.querySelector(href);
+    if (!target) return;
+    const headerOffset = 80;
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+  };
+
   return (
     <div className={`min-h-screen flex flex-col font-sans text-brand-black ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>
       {/* Header */}
@@ -41,13 +48,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className={`p-2 rounded-lg bg-brand-black text-white`}>
-              <Layers className="w-5 h-5" />
-            </div>
+          <a href="#" className="flex items-center gap-12 group">
+            <img 
+              src="/gzi-logo.svg" 
+              alt="GZI Consulting logo" 
+              className="h-16 w-auto -ml-6"
+              loading="lazy"
+            />
             <div className="flex flex-col">
               <span className="text-xl font-black tracking-tight leading-none text-brand-black">
-                GZI<span className="text-brand-primary">.</span>Systems
+                GZI<span className="text-brand-primary">.</span>Consulting
               </span>
             </div>
           </a>
@@ -58,6 +68,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <a 
                 key={item.label} 
                 href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                }}
                 className="text-sm font-bold text-slate-600 hover:text-brand-black transition-colors"
               >
                 {item.label}
@@ -94,13 +108,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
         {/* Mobile Menu Overlay */}
         {mobileMenuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-white border-b border-slate-100 p-6 md:hidden shadow-xl flex flex-col gap-4">
+          <div className="absolute top-full left-0 right-0 bg-white border-b border-slate-100 p-6 md:hidden shadow-xl flex flex-col gap-4 origin-top animate-dropdown">
             {navItems.map((item) => (
               <a 
                 key={item.label} 
                 href={item.href}
                 className="text-lg font-bold text-slate-900 py-3 border-b border-slate-50 last:border-0"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMobileMenuOpen(false);
+                  scrollToSection(item.href);
+                }}
               >
                 {item.label}
               </a>
@@ -119,12 +137,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2">
-              <Layers className="w-5 h-5 text-brand-black" />
-              <span className="font-bold text-brand-black">GZI Systems</span>
+              <img 
+                src="/gzi-logo.svg" 
+                alt="GZI Consulting logo" 
+                className="h-8 w-auto"
+                loading="lazy"
+              />
+              <span className="font-bold text-brand-black">GZI Consulting</span>
             </div>
             
             <div className="text-sm text-slate-500 text-center md:text-right font-medium">
-              © {new Date().getFullYear()} GZ Information Systems.
+              © {new Date().getFullYear()} GZ Information Consulting.
             </div>
           </div>
         </div>

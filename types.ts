@@ -17,9 +17,15 @@ export interface StatItem {
   label: string;
 }
 
+export interface ClientLogo {
+  he: string;
+  en: string;
+  src: string;
+}
+
 export interface ClientCategory {
   name: string;
-  items: string[];
+  items: ClientLogo[];
 }
 
 export interface ProjectItem {

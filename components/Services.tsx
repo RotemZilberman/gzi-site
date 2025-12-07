@@ -90,21 +90,10 @@ const Services: React.FC = () => {
                       <h4 className="text-3xl font-bold text-slate-900 mb-10 leading-snug">{selectedService.description}</h4>
                       
                       {/* Extended Description - Much Larger Text */}
-                      <div className="prose prose-xl prose-slate text-slate-600 leading-relaxed mb-12 text-xl md:text-2xl font-light">
+                      <div className="prose prose-xl prose-slate text-slate-600 leading-relaxed mb-12 text-xl md:text-2xl font-light whitespace-pre-line">
                         {selectedService.extendedDescription || selectedService.description}
                       </div>
                       
-                      <div className="bg-slate-50 rounded-2xl p-10 border border-slate-100">
-                        <h5 className="font-bold text-slate-800 mb-6 text-lg uppercase tracking-wider">Key Features</h5>
-                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                          {selectedService.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-center gap-4 text-xl text-slate-700 font-medium">
-                              <div className="w-3 h-3 rounded-full bg-brand-primary flex-shrink-0"></div>
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
                    </div>
                  </div>
 

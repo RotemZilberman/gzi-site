@@ -54,7 +54,14 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-slate-900 mb-1">{t.address}</h4>
-                  <p className="text-slate-600">{t.addressText}</p>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(t.addressText)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-slate-600 hover:text-violet-600 underline decoration-slate-200 hover:decoration-violet-300 transition-colors"
+                  >
+                    {t.addressText}
+                  </a>
                 </div>
               </div>
             </div>

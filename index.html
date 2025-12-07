@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GZ Systems | Smart City Consultants</title>
-    <meta name="description" content="GZ Systems - מובילים את מהפכת העיר החכמה. ייעוץ אסטרטגי, מערכות GIS, וניהול מכרזים טכנולוגיים לרשויות מקומיות." />
+    <title>GZ Consulting | Smart City Consultants</title>
+    <meta name="description" content="GZ Consulting - מובילים את מהפכת העיר החכמה. ייעוץ אסטרטגי, מערכות GIS, וניהול מכרזים טכנולוגיים לרשויות מקומיות." />
     
     <!-- Fonts: Heebo for Hebrew, Inter for English numbers/clean look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,6 +43,7 @@
               'fade-in': 'fadeIn 1s ease-out forwards',
               'blob': 'blob 10s infinite',
               'float': 'float 6s ease-in-out infinite',
+              'dropdown': 'dropdown 0.25s ease-out forwards',
             },
             keyframes: {
               fadeInUp: {
@@ -62,6 +63,10 @@
               float: {
                 '0%, 100%': { transform: 'translateY(0)' },
                 '50%': { transform: 'translateY(-10px)' },
+              },
+              dropdown: {
+                '0%': { opacity: '0', transform: 'scaleY(0.95) translateY(-8px)' },
+                '100%': { opacity: '1', transform: 'scaleY(1) translateY(0)' },
               }
             }
           }
@@ -95,5 +100,6 @@
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

@@ -51,7 +51,7 @@ export const CONTENT = {
       badge: 'AI-GIS Innovation',
       titleStart: 'העתיד של',
       titleEnd: 'המרחב העירוני',
-      subtitle: 'GZI Systems מחברת בין בינה מלאכותית למידע גיאוגרפי. אנו בונים את המוח הדיגיטלי של הרשויות המובילות בישראל.',
+      subtitle: 'GZI Consulting מחברת בין בינה מלאכותית למידע גיאוגרפי. אנו בונים את המוח הדיגיטלי של הרשויות המובילות בישראל.',
       ctaPrimary: 'קבע פגישת ייעוץ',
       ctaSecondary: 'צפה בפרויקטים',
       widgets: {
@@ -224,42 +224,42 @@ export const CONTENT = {
           title: 'ניהול סקר לאיתור עבירות בנייה — עיריית הרצליה',
           category: 'Data',
           description: 'בחינת שינויים בין צילומי אוויר לאיתור חריגות בנייה, כולל בקרה וטיוב נתונים.',
-          image: 'https://images.unsplash.com/photo-1470246973918-29a93221c455?q=80&w=1600&auto=format&fit=crop',
+          image: '/images/survey_management.jpg',
           tags: ['Data', 'QA', 'Planning']
         },
         {
           title: 'הקמת מערכת GIS ארגונית — עיריית באר יעקב',
           category: 'Application',
           description: 'GIS ארגוני לכל מחלקות העירייה: אפיון, יישום, אינטגרציה והדרכות משתמשים.',
-          image: 'https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?q=80&w=1600&auto=format&fit=crop',
+          image: '/images/establish_gis_beer_yaakov.jpg',
           tags: ['GIS', 'Implementation', 'Training']
         },
         {
           title: 'הסבת נתונים והקמת GIS — מי אביבים',
           category: 'Application',
           description: 'הסבת נתונים ממערכת קיימת והקמת GIS ארגוני לניהול עצמאי של נתוני התאגיד.',
-          image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600&auto=format&fit=crop',
+          image: '/images/water_establishment_mei_avivim.jpg',
           tags: ['Water Utility', 'Data Migration', 'GIS']
         },
         {
           title: 'יישום GIS Active — עיריית קריית מלאכי',
           category: 'Application',
           description: 'העצמת משתמשים, חיבור מקורות מידע ובניית מאגר עירוני מתועד בגישת GIS Active.',
-          image: 'https://images.unsplash.com/photo-1529429617124-aee1f1650a5d?q=80&w=1600&auto=format&fit=crop',
+          image: '/images/gis_active.jpg',
           tags: ['GIS Active', 'Data Hub', 'Process']
         },
         {
           title: 'ויזואליזציה של נתונים — עיריית אילת',
           category: 'Data',
           description: 'הפיכת מידע גולמי לסיפור ברור: מפות, דשבורדים ותרשימים שמזהים מגמות.',
-          image: 'https://images.unsplash.com/photo-1540544666204-0ce743321e11?q=80&w=1600&auto=format&fit=crop',
+          image: '/images/data_virtualization.jpg',
           tags: ['Dashboards', 'Visualization', 'Insights']
         },
         {
           title: 'סקר איתור תשתיות — מי רמת גן',
           category: 'Data & Application',
           description: 'איתור מלא של קווי מים וביוב, ניקוי מעל 600 ק״מ נתונים ושילוב ב-CRM הארגוני.',
-          image: 'https://images.unsplash.com/photo-1503389152951-9f343605f61e?q=80&w=1600&auto=format&fit=crop',
+          image: '/images/infrastructure_findings.jpg',
           tags: ['Water Utility', 'Data Collection', 'Integration']
         }
       ]
@@ -315,7 +315,7 @@ export const CONTENT = {
       badge: 'AI-GIS Innovation',
       titleStart: 'The Future of',
       titleEnd: 'Urban Space',
-      subtitle: 'GZI Systems bridges Artificial Intelligence and Geographic Information. We build the digital brain of Israel\'s leading municipalities.',
+      subtitle: 'GZI Consulting bridges Artificial Intelligence and Geographic Information. We build the digital brain of Israel\'s leading municipalities.',
       ctaPrimary: 'Book Consultation',
       ctaSecondary: 'View Projects',
       widgets: {
@@ -332,12 +332,12 @@ export const CONTENT = {
       readLess: 'Back to Summary',
       description1: 'For over 30 years, Gil Zilberman and the GZI team have guided municipalities, planning committees, water utilities, and private firms to build GIS, digitization, and innovation programs that truly work.',
       descriptionExtendedTitle: 'Methodology & Innovation',
-      descriptionExtended: `Technology is the means, not the goal. We use a 7-layer model for tenders and implementation, and GIS Active to keep the client an active owner of data and workflows so systems stay accurate and alive.
+      descriptionExtended: `Technology is the means, not the goal. We use a 7-layer model for tenders and implementation, and GIS Active to keep the client an active owner of data and workflows so Consulting stay accurate and alive.
 
 We define needs, write executable specs, run tenders and vendor selection, and implement GIS, automation, AI, video analytics, and smart lighting — all tied to real operational needs and measurable outcomes.`,
       features: [
         { icon: Shield, title: 'Proven & Unbiased Experience', desc: 'Dozens of authorities and enterprises over three decades.' },
-        { icon: Server, title: 'System Integration', desc: 'Simple processes, clear playbooks, and living systems.' },
+        { icon: Server, title: 'System Integration', desc: 'Simple processes, clear playbooks, and living Consulting.' },
       ],
       imageWidgets: {
         opt: 'Urban Optimization',
@@ -353,7 +353,7 @@ We define needs, write executable specs, run tenders and vendor selection, and i
     services: {
       badge: 'Expertise',
       title: 'Technology Serving the City',
-      subtitle: 'Tenders, digitization and mapping, digital innovation, GIS Active, spatial solutions, and AI — one partner to make systems work.',
+      subtitle: 'Tenders, digitization and mapping, digital innovation, GIS Active, spatial solutions, and AI — one partner to make Consulting work.',
       cta: 'Read More',
       back: 'Back to Services',
       items: [
@@ -388,7 +388,7 @@ We define needs, write executable specs, run tenders and vendor selection, and i
         {
           title: 'GIS platforms & spatial solutions',
           description: 'Setup, upgrades, and implementation of GIS, portals, and dashboards for public and private organizations.',
-          extendedDescription: 'Define needs, choose tools, integrate with permitting, tax, water, and CRM systems; train users and set maintenance and data governance. Goal: effective, simple, accurate GIS.',
+          extendedDescription: 'Define needs, choose tools, integrate with permitting, tax, water, and CRM Consulting; train users and set maintenance and data governance. Goal: effective, simple, accurate GIS.',
           icon: Database,
           features: ['Enterprise integration', 'Portals & dashboards', 'Data & metadata governance']
         },
@@ -412,42 +412,42 @@ We define needs, write executable specs, run tenders and vendor selection, and i
           title: 'Building-violation survey — Herzliya Municipality',
           category: 'Data',
           description: 'Change detection on aerial imagery to spot construction violations, including QA and data curation.',
-          image: 'https://images.unsplash.com/photo-1470246973918-29a93221c455?q=80&w=1600&auto=format&fit=crop',
+          image: '/images/survey_management.jpg',
           tags: ['Data', 'QA', 'Planning']
         },
         {
           title: 'Enterprise GIS — Beer Yaakov Municipality',
           category: 'Application',
           description: 'City-wide GIS: scoping, implementation, integrations, and user training for all departments.',
-          image: 'https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?q=80&w=1600&auto=format&fit=crop',
+          image: '/images/establish_gis_beer_yaakov.jpg',
           tags: ['GIS', 'Implementation', 'Training']
         },
         {
           title: 'Data migration & GIS rollout — Mei Avivim',
           category: 'Application',
           description: 'Migrating from a legacy system and deploying an enterprise GIS for independent utility data management.',
-          image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600&auto=format&fit=crop',
+          image: '/images/water_establishment_mei_avivim.jpg',
           tags: ['Water Utility', 'Data Migration', 'GIS']
         },
         {
           title: 'GIS Active rollout — Kiryat Malachi',
           category: 'Application',
           description: 'Implementing GIS Active: empowering users, connecting data sources, and building a documented civic hub.',
-          image: 'https://images.unsplash.com/photo-1529429617124-aee1f1650a5d?q=80&w=1600&auto=format&fit=crop',
+          image: '/images/gis_active.jpg',
           tags: ['GIS Active', 'Data Hub', 'Process']
         },
         {
           title: 'Data visualization — Eilat Municipality',
           category: 'Data',
           description: 'Turning raw information into clear stories: maps, dashboards, and charts that surface trends.',
-          image: 'https://images.unsplash.com/photo-1540544666204-0ce743321e11?q=80&w=1600&auto=format&fit=crop',
+          image: '/images/data_virtualization.jpg',
           tags: ['Dashboards', 'Visualization', 'Insights']
         },
         {
           title: 'Infrastructure survey — Mei Ramat Gan',
           category: 'Data & Application',
           description: 'Full survey of water and sewer lines, cleaning 600km of data, and integrating with the corporate CRM.',
-          image: 'https://images.unsplash.com/photo-1503389152951-9f343605f61e?q=80&w=1600&auto=format&fit=crop',
+          image: '/images/infrastructure_findings.jpg',
           tags: ['Water Utility', 'Data Collection', 'Integration']
         }
       ]
@@ -466,7 +466,7 @@ We define needs, write executable specs, run tenders and vendor selection, and i
     },
     contact: {
       title: 'Let’s Plan the Future.',
-      subtitle: 'Want to hear how our systems can save resources and improve resident service?',
+      subtitle: 'Want to hear how our Consulting can save resources and improve resident service?',
       highlight: 'Coffee is on us.',
       email: 'Email',
       phone: 'Direct Phone',

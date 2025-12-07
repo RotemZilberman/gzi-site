@@ -1,0 +1,203 @@
+{
+  "generated": "2025-12-07T01:00:20.165093",
+  "total_logos": 27,
+  "categories": {
+    "local_authorities": 16,
+    "water_authorities": 11
+  },
+  "companies": {
+    "local-authorities": [
+      {
+        "hebrew": "עיריית אילת",
+        "english": "Eilat Municipality",
+        "filename": "eilat",
+        "website": "https://www.eilat.muni.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "עיריית באר יעקב",
+        "english": "Beer Yaakov Municipality",
+        "filename": "beer-yaakov",
+        "website": "https://www.beetyaakov.muni.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "עיריית שדרות",
+        "english": "Sderot Municipality",
+        "filename": "sderot",
+        "website": "https://www.sdrot.muni.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "מועצה מקומית שדות דן",
+        "english": "Sdot Dan Local Council",
+        "filename": "sdot-dan",
+        "website": "https://sdotdan.muni.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "מועצה מקומית הגלבוע",
+        "english": "Gilboa Local Council",
+        "filename": "gilboa",
+        "website": "https://www.gilboa.muni.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "מועצה מקומית בית אל",
+        "english": "Beit El Local Council",
+        "filename": "beit-el",
+        "website": "https://beitel.muni.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "ועדה לתכנון ובניה זמורה",
+        "english": "Zamora Planning & Building Committee",
+        "filename": "zamora",
+        "website": "N/A",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "עיריית הרצליה",
+        "english": "Herzliya Municipality",
+        "filename": "herzliya",
+        "website": "https://www.herzliya.muni.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "ועדה לתכנון ובניה מצפה אפק",
+        "english": "Mitzpe Afek Planning & Building Committee",
+        "filename": "mitzpe-afek",
+        "website": "N/A",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "ועדה לתכנון ובניה רכס הכרמל",
+        "english": "Carmel Ridge Planning & Building Committee",
+        "filename": "carmel-ridge",
+        "website": "N/A",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "מועצה אזורית חבל אילות",
+        "english": "Eylot Regional Council",
+        "filename": "eylot",
+        "website": "https://eylot.muni.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "מועצה מקומית אבן יהודה",
+        "english": "Even Yehuda Local Council",
+        "filename": "even-yehuda",
+        "website": "https://evenyehuda.muni.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "מועצה אזורית לכיש",
+        "english": "Lachish Regional Council",
+        "filename": "lachish",
+        "website": "https://lachish.muni.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "מועצה מקומית מיתר",
+        "english": "Mitzar Local Council",
+        "filename": "mitzar",
+        "website": "N/A",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "קיבוץ קטורה",
+        "english": "Kibbutz Ketura",
+        "filename": "ketura",
+        "website": "https://ketura.co.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "קיבוץ אפק",
+        "english": "Kibbutz Afek",
+        "filename": "afek",
+        "website": "N/A",
+        "status": "⏳"
+      }
+    ],
+    "water-authorities": [
+      {
+        "hebrew": "מיתב",
+        "english": "Mekorot (National Water Company)",
+        "filename": "mekorot",
+        "website": "https://www.mekorot.co.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "חברה כלכלית עמק חפר",
+        "english": "Emek Hefer Economic Company",
+        "filename": "emek-hefer",
+        "website": "N/A",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "חברה כלכלית אילת",
+        "english": "Eilat Economic Company",
+        "filename": "eilat-econ",
+        "website": "N/A",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "הבאר השלישית",
+        "english": "Haba'ar Hashlishit Water Company",
+        "filename": "hbaar-hashlishit",
+        "website": "N/A",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "מי אביבים",
+        "english": "May Avivim Water Company",
+        "filename": "may-avivim",
+        "website": "N/A",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "קולחי גלבוע",
+        "english": "Kul'hot Gilboa Water Company",
+        "filename": "kulchat-gilboa",
+        "website": "N/A",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "חברה כלכלית ראש העין",
+        "english": "Rosh Ha'ayin Economic Company",
+        "filename": "rosh-haayin-econ",
+        "website": "N/A",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "מי רמת גן",
+        "english": "May Ramat Gan",
+        "filename": "may-ramat-gan",
+        "website": "https://www.meiramtgan.co.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "מי רעננה",
+        "english": "May Ra'anana",
+        "filename": "may-raanana",
+        "website": "https://www.meiranana.co.il",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "מי שיקמה",
+        "english": "May Shikma",
+        "filename": "may-shikma",
+        "website": "N/A",
+        "status": "⏳"
+      },
+      {
+        "hebrew": "תאגיד מעיינות השרון",
+        "english": "Mayanot Hasharon Water Authority",
+        "filename": "mayanot-sharon",
+        "website": "N/A",
+        "status": "⏳"
+      }
+    ]
+  }
+}

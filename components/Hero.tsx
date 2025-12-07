@@ -116,8 +116,8 @@ const Hero: React.FC = () => {
                 }}
               >
                  <img 
-                   src="/images/main_page.jpg" 
-                   alt="GZI Systems" 
+                   src="/images/hero_main.jpg" 
+                   alt="GZI Consulting" 
                    className="w-full h-full object-cover scale-105"
                  />
                  <div className="absolute inset-0 bg-brand-black/10"></div>
