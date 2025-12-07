@@ -10,10 +10,6 @@ const About: React.FC = () => {
 
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Extract icons
-  const FeatureIcon1 = t.features[0].icon;
-  const FeatureIcon2 = t.features[1].icon;
-
   return (
     <section id="about" className="py-24 bg-white border-b border-slate-100 overflow-hidden relative transition-all duration-500">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50 -skew-x-12 opacity-50 -z-10"></div>
@@ -35,21 +31,6 @@ const About: React.FC = () => {
                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                />
                <div className="absolute inset-0 bg-violet-900/20 group-hover:bg-violet-900/10 transition-colors"></div>
-               
-               {/* Floating Overlay Widgets - Hide when expanded to clean up UI */}
-               <div className={`absolute bottom-8 right-8 bg-white/95 backdrop-blur-md p-5 rounded-xl shadow-lg border border-white/50 max-w-[260px] animate-float transition-all duration-500 ${isExpanded ? 'hidden' : 'opacity-100'}`}>
-                 <div className="flex items-center gap-3 mb-3">
-                 <div className="p-2 bg-green-100 rounded-lg text-green-600">
-                     <FeatureIcon1 size={20} />
-                   </div>
-                   <div>
-                    <p className="text-sm font-bold text-slate-800">{t.imageWidgets.realtime}</p>
-                   </div>
-                 </div>
-                 <div className="flex items-center gap-1 h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                   <div className="h-full bg-green-500 w-[85%] rounded-full"></div>
-                 </div>
-               </div>
              </div>
           </div>
           
@@ -90,8 +71,8 @@ const About: React.FC = () => {
               {/* Extended Content - Fades In (Replaces previous content) */}
               <div className={`transition-all duration-700 w-full ${!isExpanded ? 'opacity-0 -translate-x-10 pointer-events-none absolute top-0' : 'opacity-100 relative'}`}>
                 <h3 className="text-3xl font-bold text-slate-900 mb-8">{t.descriptionExtendedTitle}</h3>
-                {/* Bigger Text for Expanded Mode */}
-                <div className="prose prose-xl max-w-none text-slate-700 leading-loose whitespace-pre-line text-xl md:text-2xl font-light">
+                {/* Bigger Text for Expanded Mode with narrower line length */}
+                <div className={`prose prose-lg md:prose-xl max-w-3xl lg:max-w-4xl text-slate-700 leading-relaxed whitespace-pre-line font-light ${isRtl ? 'ml-auto' : 'mr-auto'}`}>
                   {t.descriptionExtended}
                 </div>
               </div>

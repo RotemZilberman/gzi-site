@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
 
             <h1 className="text-5xl lg:text-7xl font-black text-brand-black leading-[1.05] mb-8 tracking-tight animate-fade-in-up [animation-delay:100ms]">
               {t.titleStart} <br />
-              <span className="text-brand-primary">
+              <span className="text-[#0084E0]">
                 {t.titleEnd}
               </span>
             </h1>

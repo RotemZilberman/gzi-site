@@ -38,6 +38,24 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     window.scrollTo({ top: targetPosition, behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    const handleAnchorClick = (event: Event) => {
+      if (event.defaultPrevented) return;
+      const anchor = (event.target as HTMLElement).closest('a');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      event.preventDefault();
+      scrollToSection(href);
+      setMobileMenuOpen(false);
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+    return () => document.removeEventListener('click', handleAnchorClick);
+  }, []);
+
   return (
     <div className={`min-h-screen flex flex-col font-sans text-brand-black ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>
       {/* Header */}
@@ -147,7 +165,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
             
             <div className="text-sm text-slate-500 text-center md:text-right font-medium">
-              © {new Date().getFullYear()} GZ Information Consulting.
+              © {new Date().getFullYear()} GZI Information Consulting.
             </div>
           </div>
         </div>

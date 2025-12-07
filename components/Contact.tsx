@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Send, MapPin, Mail, Phone, CalendarCheck } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import { CONTENT } from '../constants';
@@ -7,6 +7,59 @@ const Contact: React.FC = () => {
   const { language, dir } = useLanguage();
   const t = CONTENT[language].contact;
   const isRtl = dir === 'rtl';
+  const formSubmitEndpoint = 'https://formsubmit.co/ajax/3fdf0371138a7847ec88014155054eec';
+  const [formData, setFormData] = useState({ name: '', org: '', email: '', message: '' });
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [statusMessage, setStatusMessage] = useState<string>('');
+
+  const handleChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('sending');
+    setStatusMessage('');
+
+    try {
+      const response = await fetch(formSubmitEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          organization: formData.org,
+          email: formData.email,
+          _replyto: formData.email,
+          message: formData.message,
+          _subject: 'New meeting request from gzi-site',
+          _template: 'table',
+          _autoresponse: language === 'he' 
+            ? 'אנחנו נרגשים לדבר איתך! נחזור אליך בהקדם ונתאם פגישה.' 
+            : 'We are very excited to talk with you. We will meet soon!',
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || result.success === 'false') {
+        const message = result?.message || (language === 'he' ? 'שליחה נכשלה, נסה שוב בעוד רגע.' : 'Send failed, please try again shortly.');
+        setStatus('error');
+        setStatusMessage(message);
+        return;
+      }
+
+      setStatus('success');
+      setStatusMessage(language === 'he' ? 'הבקשה נשלחה! בדוק את המייל לקבלת אישור.' : 'Request sent! Check your email for confirmation.');
+      setFormData({ name: '', org: '', email: '', message: '' });
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+      setStatusMessage(language === 'he' ? 'שליחה נכשלה, נסה שוב בעוד רגע.' : 'Send failed, please try again shortly.');
+    }
+  };
 
   return (
     <section id="contact" className="py-24 bg-white relative overflow-hidden">
@@ -71,37 +124,76 @@ const Contact: React.FC = () => {
           <div className="lg:w-1/2">
             <form 
               className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50"
-              action={`mailto:${t.emailAddress}?subject=${encodeURIComponent('meeting request from gzi site')}`}
-              method="post"
-              encType="text/plain"
+              onSubmit={handleSubmit}
             >
               <h3 className="text-2xl font-bold text-slate-800 mb-6">{t.formTitle}</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-bold text-slate-700">{t.labels.name}</label>
-                  <input type="text" id="name" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition-all bg-slate-50 focus:bg-white" placeholder={t.placeholders.name} />
+                  <input 
+                    type="text" 
+                    id="name" 
+                    required
+                    value={formData.name}
+                    onChange={handleChange('name')}
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition-all bg-slate-50 focus:bg-white" 
+                    placeholder={t.placeholders.name} 
+                  />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="org" className="text-sm font-bold text-slate-700">{t.labels.org}</label>
-                  <input type="text" id="org" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition-all bg-slate-50 focus:bg-white" placeholder={t.placeholders.org} />
+                  <input 
+                    type="text" 
+                    id="org" 
+                    value={formData.org}
+                    onChange={handleChange('org')}
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition-all bg-slate-50 focus:bg-white" 
+                    placeholder={t.placeholders.org} 
+                  />
                 </div>
               </div>
 
               <div className="space-y-2 mb-6">
                 <label htmlFor="email" className="text-sm font-bold text-slate-700">{t.labels.email}</label>
-                <input type="email" id="email" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition-all bg-slate-50 focus:bg-white" placeholder={t.placeholders.email} />
+                <input 
+                  type="email" 
+                  id="email" 
+                  required
+                  value={formData.email}
+                  onChange={handleChange('email')}
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition-all bg-slate-50 focus:bg-white" 
+                  placeholder={t.placeholders.email} 
+                />
               </div>
 
               <div className="space-y-2 mb-8">
                 <label htmlFor="message" className="text-sm font-bold text-slate-700">{t.labels.message}</label>
-                <textarea id="message" rows={4} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition-all bg-slate-50 focus:bg-white resize-none" placeholder={t.placeholders.message}></textarea>
+                <textarea 
+                  id="message" 
+                  rows={4} 
+                  required
+                  value={formData.message}
+                  onChange={handleChange('message')}
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition-all bg-slate-50 focus:bg-white resize-none" 
+                  placeholder={t.placeholders.message}
+                ></textarea>
               </div>
 
-              <button type="submit" className="w-full py-4 bg-gradient-to-r from-violet-600 to-violet-800 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-violet-500/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group">
-                {t.labels.submit}
+              <button 
+                type="submit" 
+                disabled={status === 'sending'}
+                className="w-full py-4 bg-gradient-to-r from-violet-600 to-violet-800 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-violet-500/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {status === 'sending' ? (language === 'he' ? 'שולח...' : 'Sending...') : t.labels.submit}
                 <Send className={`w-4 h-4 transition-transform ${isRtl ? 'group-hover:-translate-x-1' : 'rotate-180 group-hover:translate-x-1'}`} />
               </button>
+
+              {statusMessage && (
+                <p className={`mt-4 font-semibold ${status === 'success' ? 'text-green-700' : 'text-red-600'}`}>
+                  {statusMessage}
+                </p>
+              )}
             </form>
           </div>
         </div>
