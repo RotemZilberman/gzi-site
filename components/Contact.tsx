@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white relative overflow-hidden">
+    <section id="contact" className="pt-12 pb-20 bg-white relative overflow-hidden">
       {/* Decorative Gradient Background */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-violet-50/50 to-transparent -z-10"></div>
       
@@ -70,7 +70,7 @@ const Contact: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-16">
           
           {/* Info Side */}
-          <div className="lg:w-1/2">
+          <div className="lg:w-1/2 lg:pt-8 flex flex-col">
             <h2 className="text-4xl font-black text-slate-900 mb-6">{t.title}</h2>
             <p className="text-lg text-slate-600 mb-12 font-light leading-relaxed">
               {t.subtitle} <br/>

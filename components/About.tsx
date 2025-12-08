@@ -43,7 +43,7 @@ const About: React.FC = () => {
             {/* Title - Stable */}
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
               {t.title} <br/>
-              <span className="text-[#0084E0]">{t.titleHighlight}</span>
+              <span className="text-black">{t.titleHighlight}</span>
             </h2>
 
             {/* Swapping Content Area */}
@@ -68,7 +68,7 @@ const About: React.FC = () => {
             {/* Action Button */}
             <button 
               onClick={() => setIsExpanded(!isExpanded)}
-              className="mt-12 self-start flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              className="mt-6 self-start flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               {isExpanded ? t.readLess : t.readMore}
               {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}

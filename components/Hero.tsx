@@ -125,12 +125,9 @@ const Hero: React.FC = () => {
 
               {/* Minimal Floating Widgets */}
               <div className="absolute top-[10%] right-0 bg-white p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 animate-fade-in-up [animation-delay:600ms] z-20 w-[160px] hover:scale-105 transition-transform">
-                <div className="flex items-center gap-3 mb-2">
+                <div className="flex flex-col items-center justify-center text-center gap-2">
                    <div className="p-2 bg-slate-50 rounded-md text-brand-black"><Database size={16} /></div>
                    <span className="text-xs font-bold text-slate-900">{t.widgets.bigData}</span>
-                </div>
-                <div className="h-1 w-full bg-slate-100 rounded-full overflow-hidden">
-                   <div className="h-full bg-brand-black w-[70%] animate-[pulse_3s_infinite]"></div>
                 </div>
               </div>
 

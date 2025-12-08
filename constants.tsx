@@ -94,7 +94,7 @@ export const CONTENT = {
     },
     stats: [
       { value: '25+', label: 'שנות מצוינות' },
-      { value: '50+', label: 'ערים חכמות' },
+      { value: '100+', label: 'פרוייקטים' },
       { value: '∞', label: 'חדשנות ללא גבולות' },
     ],
     services: {
@@ -181,11 +181,12 @@ GZI מלווה את הרשות בכל שלבי התהליך:
           description: 'הטמעה שמעצימה את הלקוח לנהל ולעדכן מידע בעצמו, עם נהלים וכלים פשוטים.',
           extendedDescription: `הטמעה שמעצימה את הלקוח לנהל ולעדכן מידע בעצמו, עם נהלים וכלים פשוטים.
 ארגונים פועלים בעולם מורכב עם ריבוי מידע ודרישות חוקיות. גישת GIS Active מאפשרת לרשות להיות שותפה מלאה בניהול המידע ולהפוך אותו לכלי החלטה, לא רק לאחסון נתונים. 
- העקרונות המרכזיים בישום GIS Active: 
-- הלקוח כגורם פעיל: עבודה עם כלים פשוטים לניהול המידע, עדכון עצמאי ואמון גבוה בנתונים. יישום מתודולוגיה של GIS Active משמעותה יישום שמאפשר לארגון הפקת תובנות, תמיכה בקבלת החלטות, זיהוי מגמות ודוחות דינמיים. 
-- "פשטות כמפתח": מערכת אינטואיטיבית שמתאימה לתהליכי העבודה ומעודדת שימוש ואימוץ טכנולוגי.  
-- תחזוקת מידע לאורך זמן: קביעת נהלי עבודה, תהליכי עדכון שוטפים, שגרות בקרה וחלוקת אחריות בין תפקידים. 
-מה כולל השירות שאנו מעניקים ? אפיון וניתוח צרכים, התאמת פתרון טכני ותפעולי, יישום והטמעה עם הדרכות פרקטיות, הנחיות לעדכון נתונים ובניית נהלי עבודה, עיצוב דשבורדים ומפות נושאיות, בקרה ותחזוקה שוטפת. 
+
+• הלקוח כגורם פעיל: עבודה עם כלים פשוטים לניהול המידע, עדכון עצמאי ואמון גבוה בנתונים. יישום מתודולוגיה של GIS Active משמעותה יישום שמאפשר לארגון הפקת תובנות, תמיכה בקבלת החלטות, זיהוי מגמות ודוחות דינמיים. 
+• "פשטות כמפתח": מערכת אינטואיטיבית שמתאימה לתהליכי העבודה ומעודדת שימוש ואימוץ טכנולוגי.  
+• תחזוקת מידע לאורך זמן: קביעת נהלי עבודה, תהליכי עדכון שוטפים, שגרות בקרה וחלוקת אחריות בין תפקידים. 
+
+מה כולל השירות שאנו מעניקים? אפיון וניתוח צרכים, התאמת פתרון טכני ותפעולי, יישום והטמעה עם הדרכות פרקטיות, הנחיות לעדכון נתונים ובניית נהלי עבודה, עיצוב דשבורדים ומפות נושאיות, בקרה ותחזוקה שוטפת. 
 התוצאה: מידע עדכני ותובנות שמאפשרות החלטות נכונות ומהירות, פשטות שמביאה לאימוץ, ועצמאות עם תלות מינימלית בספקים.`,
           icon: Building2,
           features: ['הדרכות ונהלים', 'עדכון רציף', 'בקרה ותחזוקה']
@@ -196,13 +197,13 @@ GZI מלווה את הרשות בכל שלבי התהליך:
           extendedDescription: `הקמה, שדרוג ויישום של מערכות GIS, פורטלים ודשבורדים בארגונים ציבוריים ופרטיים.
 מערכות GIS הן כלי מרכזי לניהול תשתיות, תכנון עירוני, ניהול נכסים ושיפור שירות לתושב. 
 הצלחה מחייבת תכנון נכון, הבנת התהליכים הארגוניים ויכולת לייצר מידע אמין, עדכני וקל לתפעול.
-מה כולל הליווי בתחום הGIS - ? 
-- הגדרת צרכים ואפיון מערכת: הבנת תהליכי העבודה, זיהוי שכבות מידע נדרשות, בחירת כלים טכנולוגיים, תשתיות, ארכיטקטורה ונהלי עבודה.  
-- בניית פתרונות מידע מרחבי: מערכות פנימיות לאנשי מקצוע, פורטלים ונגישות מידע לתושבים, דשבורדים מרחביים ומודלים לניהול נכסים ותשתיות.  
-- אינטגרציה וחיבור למערכות ארגוניות: הגדרת ממשקים, תהליכי סנכרון מידע, אחידות תקנים ותמיכה בתשתיות IT 
-- הטמעה והדרכות: הדרכות פרקטיות, פיתוח כלים פשוטים למשתמשים, התאמת המערכת לתפקידים שונים ובניית נהלים לשמירה על מידע חי ומתוחזק. 
-- ניהול נתונים ושיפור איכותם: תחזוקת שכבות, בקרת איכות, ניהול Metadata, תקנון נתונים ותמיכה באיסוף נתונים ופרויקטי דיגיטציה.  
-- הפקת תובנות וניתוח מרחבי: ניתוחים, דוחות ודשבורדים לתמיכה בקבלת החלטות על תשתיות, תכנון ותפעול. 
+מה כולל הליווי בתחום הGIS: 
+• הגדרת צרכים ואפיון מערכת: הבנת תהליכי העבודה, זיהוי שכבות מידע נדרשות, בחירת כלים טכנולוגיים, תשתיות, ארכיטקטורה ונהלי עבודה.  
+• בניית פתרונות מידע מרחבי: מערכות פנימיות לאנשי מקצוע, פורטלים ונגישות מידע לתושבים, דשבורדים מרחביים ומודלים לניהול נכסים ותשתיות.  
+• אינטגרציה וחיבור למערכות ארגוניות: הגדרת ממשקים, תהליכי סנכרון מידע, אחידות תקנים ותמיכה בתשתיות IT 
+• הטמעה והדרכות: הדרכות פרקטיות, פיתוח כלים פשוטים למשתמשים, התאמת המערכת לתפקידים שונים ובניית נהלים לשמירה על מידע חי ומתוחזק. 
+• ניהול נתונים ושיפור איכותם: תחזוקת שכבות, בקרת איכות, ניהול Metadata, תקנון נתונים ותמיכה באיסוף נתונים ופרויקטי דיגיטציה.  
+• הפקת תובנות וניתוח מרחבי: ניתוחים, דוחות ודשבורדים לתמיכה בקבלת החלטות על תשתיות, תכנון ותפעול. 
 
 למה לבחור בנו? 
 ניסיון של מעל 30 שנה ומאות פרויקטים ברחבי הארץ, היכרות עמוקה עם עולם הרשויות והתאגידים, מומחיות ב-ESRI, AutoDesk  ,פתרונות קוד פתוח, וגישה פרקטית שמסתכלת על תהליכי העבודה ומעצימה את הלקוח לאורך זמן.`,
@@ -214,12 +215,12 @@ GZI מלווה את הרשות בכל שלבי התהליך:
           description: 'שילוב AI עם GIS לניתוח מגמות, זיהוי דפוסים וחיזוי עומסים ואירועים.',
           extendedDescription: `שילוב AI עם GIS לניתוח מגמות, זיהוי דפוסים וחיזוי עומסים ואירועים.
 שילוב בין ניתוח מרחבי לבין בינה מלאכותית יוצר תובנות חכמות לתכנון ותפעול. ארגונים רבים מנצלים רק חלק מהמידע, והחיבור בין GIS ל-AI משנה את תמונת קבלת ההחלטות.
- מה כולל השירות? 
-- ניתוח נתונים מבוסס AI: Machine Learning ו־Deep Learning  לזיהוי דפוסים בתשתיות, עומסים ורישוי, גילוי חריגות, זיהוי מוקדי תקלות וסיווג נתונים מורכבים. 
-- חיזוי (Predictive Analytics): מודלים להבנת התפתחות עומסים על מים, ביוב ותחבורה, צרכים תפעוליים (אחזקה, תאורה, ניקיון), הערכות לפי נתוני אוכלוסייה והדמיות תרחישים. 
-- תובנות מרחביות חכמות: זיהוי מגמות, קבלת החלטות על עדיפויות השקעה, תכנון תשתיות וייעול תהליכים. התובנות מוצגות בדשבורדים אינטראקטיביים, מפות נושאיות ומערכות תומכות־החלטה. 
-- שילוב נתוני וידאו אנליטיקה ו-AI Spatial:  מיפוי אירועים בזמן אמת, ניטור תנועה והתנהגות משתמשי דרך, תיעוד תשתיות ותחזוקה חזויה.  
-- אוטומציה מבוססת מיקום: דוחות אוטומטיים לפי מצב עדכני בשטח, ניהול תהליכי רישוי לפי מיקום, שליפה אוטומטית של נתונים וקישור בין תשתיות קיימות לאירועים ודיווחים.
+מה כולל השירות? 
+• ניתוח נתונים מבוסס AI: Machine Learning ו־Deep Learning  לזיהוי דפוסים בתשתיות, עומסים ורישוי, גילוי חריגות, זיהוי מוקדי תקלות וסיווג נתונים מורכבים. 
+• חיזוי (Predictive Analytics): מודלים להבנת התפתחות עומסים על מים, ביוב ותחבורה, צרכים תפעוליים (אחזקה, תאורה, ניקיון), הערכות לפי נתוני אוכלוסייה והדמיות תרחישים. 
+• תובנות מרחביות חכמות: זיהוי מגמות, קבלת החלטות על עדיפויות השקעה, תכנון תשתיות וייעול תהליכים. התובנות מוצגות בדשבורדים אינטראקטיביים, מפות נושאיות ומערכות תומכות־החלטה. 
+• שילוב נתוני וידאו אנליטיקה ו-AI Spatial:  מיפוי אירועים בזמן אמת, ניטור תנועה והתנהגות משתמשי דרך, תיעוד תשתיות ותחזוקה חזויה.  
+• אוטומציה מבוססת מיקום: דוחות אוטומטיים לפי מצב עדכני בשטח, ניהול תהליכי רישוי לפי מיקום, שליפה אוטומטית של נתונים וקישור בין תשתיות קיימות לאירועים ודיווחים.
 
 יתרונות והערך הייחודי:
 המידע עובד בשביל הארגון ולא רק נאגר במערכת, זמן קבלת ההחלטות מתקצר, נוצרת ראייה מערכתית שמאפשרת חיזוי בעיות ותכנון מבוסס נתונים. ניסיון של עשרות שנים ב-GIS, שילוב ידע טכנולוגי ותהליכי עבודה, הנגשת מידע מורכב ופיתוח מודלים מותאמים לכל רשות.`,
@@ -264,18 +265,18 @@ GZI מלווה את הרשות בכל שלבי התהליך:
           tags: ['GIS Active', 'Data Hub', 'Process']
         },
         {
-          title: 'ויזואליזציה של נתונים — עיריית אילת',
-          category: 'Data',
-          description: 'הפיכת מידע גולמי לסיפור ברור: מפות, דשבורדים ותרשימים שמזהים מגמות.',
-          image: '/images/data_virtualization.jpg',
-          tags: ['Dashboards', 'Visualization', 'Insights']
-        },
-        {
           title: 'סקר איתור תשתיות — מי רמת גן',
           category: 'Data & Application',
           description: 'איתור מלא של קווי מים וביוב, ניקוי מעל 600 ק״מ נתונים ושילוב ב-CRM הארגוני.',
           image: '/images/infrastructure_findings.jpg',
           tags: ['Water Utility', 'Data Collection', 'Integration']
+        },
+        {
+          title: 'ויזואליזציה של נתונים — עיריית אילת',
+          category: 'Data',
+          description: 'הפיכת מידע גולמי לסיפור ברור: מפות, דשבורדים ותרשימים שמזהים מגמות.',
+          image: '/images/data_virtualization.jpg',
+          tags: ['Dashboards', 'Visualization', 'Insights']
         }
       ]
     },
@@ -330,7 +331,7 @@ GZI מלווה את הרשות בכל שלבי התהליך:
       badge: 'AI-GIS Innovation',
       titleStart: 'The Future of',
       titleEnd: 'Urban Space',
-      subtitle: 'GZI Consulting bridges Artificial Intelligence and Geographic Information. We build the digital brain of Israel\'s leading municipalities.',
+      subtitle: 'GZI Consulting bridges Artificial Intelligence and Geographic Information. We turn data into insight and make it simple to use for Israel\'s leading municipalities.',
       ctaPrimary: 'Book Consultation',
       ctaSecondary: 'View Projects',
       widgets: {
@@ -345,11 +346,22 @@ GZI מלווה את הרשות בכל שלבי התהליך:
       titleHighlight: 'We Are Smart City Architects.',
       readMore: 'Read More About Our Vision',
       readLess: 'Back to Summary',
-      description1: 'For over 30 years, Gil Zilberman and the GZI team have guided municipalities, planning committees, water utilities, and private firms to build GIS, digitization, and innovation programs that truly work.',
+      description1: 'For over 30 years, Gil Zilberman and the GZI team have guided municipalities, planning committees, water utilities, and private firms in building GIS, digitization, and digital innovation. Our strength: connecting business/operational understanding with technology, so systems serve users and deliver business insight. Since 2017 Gil has advised authorities and planning committees on information systems, digitization and surveys, and RFPs for data-collection projects such as urban infrastructure, lighting and stability checks, signage surveys, aerial imagery, and building-violation surveys.',
       descriptionExtendedTitle: 'Methodology & Innovation',
-      descriptionExtended: `Technology is the means, not the goal. We use a 7-layer model for tenders and implementation, and GIS Active to keep the client an active owner of data and workflows so Consulting stay accurate and alive.
+      descriptionExtended: `Methodology & Innovation 
+Technology is a means, not the goal. In a crowded solutions market, the challenge is choosing what fits the operational reality, professional requirements, and budget.
+Successful implementations rest on service experience, user value, continuous updates, and data accuracy over time. Reliable data turns into insight and a planning/maintenance tool.
+Over the years we developed distinct methodologies for implementing information systems.
+For RFPs we use a 7-layer tender method where each layer builds the next—ensuring fit and smooth implementation.
+In GIS we built the GIS Active approach, making the client a full partner in managing and updating data so the system stays accurate. 
+For 30+ years we’ve advised municipalities, planning committees, water utilities, and private companies on GIS and land-information systems.
+Deep work with most Israeli municipal bodies honed our unique blend of business-operational understanding and advanced tech.
+We connect business needs to technology, understand organizational reality, and craft solutions that balance functionality, budget, and operational capacity. 
 
-We define needs, write executable specs, run tenders and vendor selection, and implement GIS, automation, AI, video analytics, and smart lighting — all tied to real operational needs and measurable outcomes.`,
+What we do:
+Scoping and requirements, tailored technical/business solutions, project management for IT/GIS, data analysis and insights, RFP consulting and authoring, vendor selection support, and full implementation/operations support.
+Who we serve:
+Cities and municipalities, regional/local councils, regional planning committees, water utilities, government ministries, and private firms managing assets and infrastructure.`,
       features: [
         { icon: Shield, title: 'Proven & Unbiased Experience', desc: 'Dozens of authorities and enterprises over three decades.' },
         { icon: Server, title: 'System Integration', desc: 'Simple processes, clear playbooks, and living Consulting.' },
@@ -361,55 +373,126 @@ We define needs, write executable specs, run tenders and vendor selection, and i
     },
     stats: [
       { value: '25+', label: 'Years of Excellence' },
-      { value: '50+', label: 'Smart Cities' },
+      { value: '100+', label: 'Projects' },
       { value: '∞', label: 'Limitless Innovation' },
     ],
     services: {
       badge: 'Expertise',
       title: 'Technology Serving the City',
-      subtitle: 'Tenders, digitization and mapping, digital innovation, GIS Active, spatial solutions, and AI — one partner to make Consulting work.',
+      subtitle: 'Full envelope: tenders, digitization and mapping, digital innovation, GIS Active, GIS solutions, and AI—so systems actually work.',
       cta: 'Read More',
       back: 'Back to Services',
       items: [
         {
           title: 'Tender consulting & RFP authoring',
-          description: 'Client-tailored tenders using a 7-layer model: functional and technical needs, integrations, timelines, and QA.',
-          extendedDescription: 'Define needs, write precise and executable requirements, publish and support vendor selection. The goal: a document the organization understands and can implement without surprises.',
+          description: 'Client-tailored tenders using a 7-layer method covering functional/technical needs, integrations, timelines, and QA to ensure the right fit.',
+          extendedDescription: `Writing an RFP for information systems is a critical stage. A good tender is a detailed work plan: what the org needs, how success is measured, and what to demand from vendors.
+Years of experience show a solution that fits one org may not fit another, so the tender must be client-specific, built on deep understanding of processes, capabilities, team, and budget.
+We use a 7-layer model—each layer builds the next—to guarantee a high-quality tender and implementation.
+We start with current-state analysis and user requirements, then map how the new system fits the org and other systems. That depth lets us detail technical needs and service levels, and set clear expectations with vendors for delivery.
+
+Why the 7-layer method?
+• Tailored to the client, not off-the-shelf.
+• Reduces risks and errors during implementation.
+• System-wide view that prevents surprises later.
+• Combines hands-on tech know-how with long public-tender experience.
+• Transparent process with the client as a full partner in defining needs and choosing the solution.`,
           icon: FileText,
           features: ['7-layer framework', 'Client-specific fit', 'Vendor selection support']
         },
         {
           title: 'Data collection, digitization & mapping',
-          description: 'Full guidance for surveys (water, sewer, drainage, lighting, signage, tax, building deviations) from specs to field QA.',
-          extendedDescription: 'Technical specs, contractor oversight, on-site quality checks, cleaning and standardizing layers, topology tests, and GIS ingestion. Focus: standardized, reliable data.',
+          description: 'End-to-end guidance for field surveys—from aerial imagery to field completion—for water, sewer, drainage, lighting, signage, tax, and building deviations.',
+          extendedDescription: `Full guidance for water, sewer, drainage, lighting, signage, tax, and building-violation surveys—from definition through field supervision.
+Accurate field data is the cornerstone of any quality information system.
+We lead organizations through planning and executing data-collection, digitization, and mapping projects—from initial design to delivering standard, reliable data tailored to GIS and enterprise systems.
+
+What’s included?
+Requirements and specs: analyze needs, data formats, accuracy, standards, and exact fit to client systems.
+
+Close support through collection and production:
+• Surveys and QA for water, sewer, drainage, lighting
+• Signage and traffic-sign mapping
+• Property-tax (arnona) surveys
+• Building-violation detection (Section 116)
+
+Quality control and disciplined project management:
+We apply strict QA and manage the project to an agreed work plan, delivering accurate, usable outputs.
+
+We also handle aerials (orthophoto, oblique, 3D) and field completions; QA and normalize layers; and manage delivery into GIS and other systems.`,
           icon: Layers,
           features: ['Precise specs', 'Field QA', 'Digitization & normalization']
         },
         {
           title: 'Digital innovation & process improvement',
-          description: 'Automation, AI, video analytics, and smart lighting to improve citizen services and infrastructure operations.',
-          extendedDescription: 'Need-driven solution selection, specs, and implementation support: RPA/Workflow, predictive analytics, sensors and cameras, and smart lighting for efficiency and safety.',
+          description: 'Automation, AI, video analytics, and smart lighting to improve resident services and infrastructure operations.',
+          extendedDescription: `Automation, AI, video analytics, and smart lighting to improve resident service and infrastructure operations.
+With heavy workloads, regulation, and rising expectations, digital innovation is essential. We help municipalities adopt tech that fits their capabilities, reality, and budget—with real process improvement and value.
+
+What’s inside digital innovation?
+Automation & workflow
+Citizen requests, inter-department flows, data sync, faster handling, and major resource savings.
+Artificial Intelligence (AI)
+GIS data analysis, AI-driven GIS, predictive tools for loads and failures, chatbots and digital services, anomaly detection for better control and operations.
+Advanced video analytics
+Real-time event detection, traffic and pedestrian monitoring, urban safety, and fusion into GIS and other data stores.
+Smart lighting & infrastructure
+Remote control, energy management, fault monitoring, sensors (environment, traffic, parking, and more), and efficient asset management.
+
+End-to-end support—from thinking to continuous improvement
+We define needs and strategy, survey solutions, craft precise specs, write tenders, support implementation, and drive ongoing measurement and improvement. Deep municipal experience ensures tech, workflows, and systems fit together and create real change.`,
           icon: Cpu,
           features: ['Automation & workflow', 'AI for ops & service', 'Video & smart lighting']
         },
         {
           title: 'GIS implementation (GIS Active)',
           description: 'Implementation that empowers the client to manage and update data with simple tools and clear playbooks.',
-          extendedDescription: 'GIS Active: training, procedures, ongoing updates, dashboards, and insights. Ensures the system stays accurate and supports decisions over time.',
+          extendedDescription: `GIS Active empowers clients to manage and update data themselves with simple tools and playbooks.
+In a complex world with lots of data and regulation, GIS Active makes the authority a full partner so the system is a decision tool—not just storage.
+
+• Active client: simple tools, self-updates, and trusted data; insights, decisions, trends, and dynamic reports.
+• “Simplicity as a key”: intuitive system that fits workflows and encourages adoption.
+• Long-term accuracy: playbooks, update cycles, QA routines, and clear roles.
+
+What we deliver: needs analysis, technical/operational fit, implementation with practical training, data-update guidelines and playbooks, dashboards and thematic maps, and ongoing QA/maintenance.
+Result: current data, faster decisions, easy adoption, and independence with minimal vendor reliance.`,
           icon: Building2,
           features: ['Playbooks & training', 'Ongoing updates', 'Quality control']
         },
         {
           title: 'GIS platforms & spatial solutions',
-          description: 'Setup, upgrades, and implementation of GIS, portals, and dashboards for public and private organizations.',
-          extendedDescription: 'Define needs, choose tools, integrate with permitting, tax, water, and CRM Consulting; train users and set maintenance and data governance. Goal: effective, simple, accurate GIS.',
+          description: 'Setup, upgrade, and implementation of GIS, portals, and dashboards for public and private organizations.',
+          extendedDescription: `Setup, upgrade, and implementation of GIS, portals, and dashboards for public and private organizations.
+GIS is central to infrastructure management, urban planning, asset management, and resident services. Success requires good design, process understanding, and reliable, easy-to-use data.
+
+What’s in our GIS support:
+• Needs and system design: workflows, required layers, tech choices, infrastructure, architecture, and procedures.
+• Spatial solutions: internal systems for professionals, public portals, dashboards, and asset/infrastructure models.
+• Integration: interfaces, data sync, standards alignment, and IT support.
+• Implementation and training: practical training, simple tools, role-fit, and procedures to keep data alive.
+• Data management and quality: layer maintenance, QA, metadata management, standardization, and support for data collection and digitization projects.
+• Insights and spatial analysis: analytics, reports, and dashboards to drive decisions on infrastructure, planning, and operations.
+
+Why us?
+30+ years, hundreds of projects, deep municipal/utility experience, ESRI/AutoDesk/open-source expertise, and a practical, work-process view that empowers the client long term.`,
           icon: Database,
           features: ['Enterprise integration', 'Portals & dashboards', 'Data & metadata governance']
         },
         {
           title: 'AI & GIS Intelligence',
           description: 'Blend AI with GIS to detect patterns, predict loads, and automate location-based actions.',
-          extendedDescription: 'Machine Learning and Deep Learning for spatial analysis, scenario forecasting, video-analytics fusion, and decision-ready dashboards. Data that turns into insight and action.',
+          extendedDescription: `Blending AI with GIS to analyze trends, detect patterns, and predict loads and events.
+Spatial analysis + AI yields smarter planning and operations; many organizations use only part of their data and miss these insights.
+
+What’s included:
+• AI-driven analysis: Machine Learning and Deep Learning to spot patterns in infrastructure, loads, and permitting; detect anomalies; find failure hot spots; and classify complex data.
+• Predictive analytics: models for water/sewer/traffic loads, operational needs (maintenance, lighting, cleaning), population-based forecasts, and scenario simulations.
+• Smart spatial insights: trend detection, investment prioritization, infrastructure planning, and process optimization. Presented in interactive dashboards, thematic maps, and decision-support systems.
+• Video analytics + AI Spatial: real-time event mapping, traffic/behavior monitoring, infrastructure documentation, and predictive maintenance.
+• Location-based automation: automatic reports, location-driven permitting flows, data retrieval, and linking existing infrastructure to events and reports.
+
+Value:
+Data works for the organization (not just stored), decision time shrinks, and a system-wide view enables forecasting and data-driven planning. Built on decades of GIS experience, tech/process know-how, and clear, decision-ready models for every client.`,
           icon: Map,
           features: ['Predictive analytics', 'Spatial AI', 'Location-based automation']
         }
@@ -451,18 +534,18 @@ We define needs, write executable specs, run tenders and vendor selection, and i
           tags: ['GIS Active', 'Data Hub', 'Process']
         },
         {
-          title: 'Data visualization — Eilat Municipality',
-          category: 'Data',
-          description: 'Turning raw information into clear stories: maps, dashboards, and charts that surface trends.',
-          image: '/images/data_virtualization.jpg',
-          tags: ['Dashboards', 'Visualization', 'Insights']
-        },
-        {
           title: 'Infrastructure survey — Mei Ramat Gan',
           category: 'Data & Application',
           description: 'Full survey of water and sewer lines, cleaning 600km of data, and integrating with the corporate CRM.',
           image: '/images/infrastructure_findings.jpg',
           tags: ['Water Utility', 'Data Collection', 'Integration']
+        },
+        {
+          title: 'Data visualization — Eilat Municipality',
+          category: 'Data',
+          description: 'Turning raw information into clear stories: maps, dashboards, and charts that surface trends.',
+          image: '/images/data_virtualization.jpg',
+          tags: ['Dashboards', 'Visualization', 'Insights']
         }
       ]
     },
@@ -480,7 +563,7 @@ We define needs, write executable specs, run tenders and vendor selection, and i
     },
     contact: {
       title: 'Let’s Plan the Future.',
-      subtitle: 'Want to hear how our Consulting can save resources and improve resident service?',
+      subtitle: 'Want to hear how our systems can save resources and improve resident service?',
       highlight: 'Coffee is on us.',
       email: 'Email',
       phone: 'Direct Phone',
