@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, MapPin, Mail, Phone, CalendarCheck } from 'lucide-react';
+import { Send, MapPin, Mail, Phone } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import { CONTENT } from '../constants';
 
@@ -71,9 +71,6 @@ const Contact: React.FC = () => {
           
           {/* Info Side */}
           <div className="lg:w-1/2">
-            <div className="inline-block p-3 rounded-2xl bg-violet-100 text-violet-700 mb-6">
-               <CalendarCheck className="w-8 h-8" />
-            </div>
             <h2 className="text-4xl font-black text-slate-900 mb-6">{t.title}</h2>
             <p className="text-lg text-slate-600 mb-12 font-light leading-relaxed">
               {t.subtitle} <br/>

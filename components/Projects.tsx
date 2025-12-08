@@ -24,7 +24,7 @@ const Projects: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="max-w-2xl">
-            <h2 className="text-xs font-bold tracking-widest text-slate-500 uppercase mb-4">{t.badge}</h2>
+            <h2 className="text-xs font-bold tracking-widest text-violet-600 uppercase mb-4">{t.badge}</h2>
             <h3 className="text-4xl font-black text-brand-black">{t.title}</h3>
             <p className="text-lg text-slate-600 mt-4 max-w-xl">
               {t.subtitle}
@@ -43,13 +43,13 @@ const Projects: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 min-h-[500px]">
           {visibleProjects.map((project, index) => (
-            <div key={`${currentIndex}-${index}`} className="group flex flex-col gap-6 cursor-pointer animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
+            <div key={`${currentIndex}-${index}`} className="flex flex-col gap-6 animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
               {/* Image Container - Clean, no heavy borders */}
               <div className="relative h-72 overflow-hidden rounded-2xl bg-slate-100">
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover"
                 />
                 <div className="absolute top-4 right-4 z-20">
                    <span className="px-3 py-1 bg-white text-xs font-bold text-brand-black rounded-full shadow-sm">
@@ -60,10 +60,10 @@ const Projects: React.FC = () => {
 
               {/* Content - Editorial Style */}
               <div className="flex flex-col flex-grow">
-                <h4 className="text-2xl font-bold text-brand-black mb-2 group-hover:text-brand-primary transition-colors">
+                <h4 className="text-2xl font-bold text-brand-black mb-2 min-h-[72px]">
                   {project.title}
                 </h4>
-                <p className="text-slate-600 mb-4 text-sm leading-relaxed">
+                <p className="text-slate-600 mb-4 text-sm leading-relaxed min-h-[72px]">
                   {project.description}
                 </p>
               </div>

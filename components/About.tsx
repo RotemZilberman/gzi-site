@@ -43,7 +43,7 @@ const About: React.FC = () => {
             {/* Title - Stable */}
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
               {t.title} <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-l from-violet-600 to-cyan-500">{t.titleHighlight}</span>
+              <span className="text-[#0084E0]">{t.titleHighlight}</span>
             </h2>
 
             {/* Swapping Content Area */}
@@ -53,19 +53,6 @@ const About: React.FC = () => {
                  <p className="text-lg text-slate-600 mb-8 leading-relaxed font-light">
                    {t.description1}
                  </p>
-                 <div className="space-y-6">
-                   {t.features.map((feature, idx) => (
-                     <div key={idx} className="flex items-start gap-4">
-                        <div className={`mt-1 p-2 rounded-lg ${idx === 0 ? 'bg-violet-100 text-violet-600' : 'bg-cyan-100 text-cyan-600'}`}>
-                          <feature.icon size={18} />
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-slate-900 text-base">{feature.title}</h4>
-                          <p className="text-sm text-slate-500 mt-1">{feature.desc}</p>
-                        </div>
-                     </div>
-                   ))}
-                 </div>
               </div>
 
               {/* Extended Content - Fades In (Replaces previous content) */}
