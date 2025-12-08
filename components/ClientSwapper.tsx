@@ -5,15 +5,15 @@ import { ClientLogo } from '../types';
 
 const ClientBox: React.FC<{ items: ClientLogo[]; language: 'he' | 'en' }> = ({ items, language }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isFading, setIsFading] = useState(false);
+  const [isRolling, setIsRolling] = useState(false);
 
   useEffect(() => {
     if (items.length <= 1) return;
 
-    const intervalTime = Math.random() * 4000 + 4000;
+    const intervalTime = 8000 + Math.random() * 4000;
     
     const interval = setInterval(() => {
-      setIsFading(true);
+      setIsRolling(true);
       setTimeout(() => {
         let nextIndex;
         do {
@@ -21,8 +21,8 @@ const ClientBox: React.FC<{ items: ClientLogo[]; language: 'he' | 'en' }> = ({ i
         } while (nextIndex === currentIndex && items.length > 1);
         
         setCurrentIndex(nextIndex);
-        setIsFading(false);
-      }, 500);
+        setIsRolling(false);
+      }, 600);
     }, intervalTime);
 
     return () => clearInterval(interval);
@@ -34,7 +34,7 @@ const ClientBox: React.FC<{ items: ClientLogo[]; language: 'he' | 'en' }> = ({ i
   return (
     <div className="h-20 flex items-center justify-center p-3">
       <div
-        className={`h-full w-full flex items-center justify-center transition-all duration-500 ${isFading ? 'opacity-0 blur-sm scale-95' : 'opacity-100 blur-0 scale-100'}`}
+        className={`h-full w-full flex items-center justify-center transition-all duration-600 ${isRolling ? 'opacity-0 rotate-6 scale-95' : 'opacity-100 rotate-0 scale-100'}`}
       >
         <img
           src={currentLogo.src}
@@ -72,7 +72,7 @@ const ClientSwapper: React.FC = () => {
           
           <div>
             <h3 className="text-sm font-bold text-slate-300 uppercase tracking-widest mb-4">{categories[0].name}</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-4">
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-4">
               {muniBuckets.map((bucket, idx) => (
                 <ClientBox key={`muni-${idx}`} items={bucket} language={language} />
               ))}
@@ -81,7 +81,7 @@ const ClientSwapper: React.FC = () => {
 
           <div>
             <h3 className="text-sm font-bold text-slate-300 uppercase tracking-widest mb-4">{categories[1].name}</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-4">
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-4">
               {corpBuckets.map((bucket, idx) => (
                 <ClientBox key={`corp-${idx}`} items={bucket} language={language} />
               ))}

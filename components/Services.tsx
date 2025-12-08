@@ -87,12 +87,12 @@ const Services: React.FC = () => {
                    {/* Right Side: Content */}
                    <div className="md:w-3/4">
                       {/* Short Description - Larger */}
-                      <h4 className="text-1xl md:text-2xl font-bold text-slate-900 mb-8 leading-snug">
+                      <h4 className="text-xl md:text-2xl font-bold text-slate-900 mb-6 leading-snug">
                         {selectedService.description}
                       </h4>
                       
                       {/* Extended Description - Match About sizing */}
-                      <div className="prose prose-base md:prose-lg max-w-4xl text-slate-700 leading-relaxed mb-10 font-light whitespace-pre-line">
+                      <div className="prose prose-base md:prose-lg max-w-4xl text-slate-700 leading-relaxed mb-8 font-light whitespace-pre-line">
                         {selectedService.extendedDescription || selectedService.description}
                       </div>
                       

@@ -124,14 +124,14 @@ const Hero: React.FC = () => {
               </div>
 
               {/* Minimal Floating Widgets */}
-              <div className="absolute top-[10%] right-0 bg-white p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 animate-fade-in-up [animation-delay:600ms] z-20 w-[160px] hover:scale-105 transition-transform">
+              <div className="hidden md:block absolute top-[10%] right-0 bg-white p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 animate-fade-in-up [animation-delay:600ms] z-20 w-[160px] hover:scale-105 transition-transform">
                 <div className="flex flex-col items-center justify-center text-center gap-2">
                    <div className="p-2 bg-slate-50 rounded-md text-brand-black"><Database size={16} /></div>
                    <span className="text-xs font-bold text-slate-900">{t.widgets.bigData}</span>
                 </div>
               </div>
 
-              <div className="absolute bottom-[15%] left-0 bg-white p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 animate-fade-in-up [animation-delay:800ms] z-20 hover:scale-105 transition-transform">
+              <div className="hidden md:block absolute bottom-[15%] left-0 bg-white p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 animate-fade-in-up [animation-delay:800ms] z-20 hover:scale-105 transition-transform">
                 <div className="flex items-center gap-3">
                    <div className="p-2 bg-slate-50 rounded-md text-brand-black"><MapIcon size={16} /></div>
                    <div>

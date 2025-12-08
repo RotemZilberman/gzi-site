@@ -66,11 +66,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-7 group">
+          <a href="#" className="flex items-center gap-5 group">
             <img 
               src="/gzi-logo.svg" 
               alt="GZI Consulting logo" 
-              className={`h-16 w-auto ${dir === 'rtl' ? '-mr-12' : '-ml-12'}`}
+              className={`h-16 w-auto ${dir === 'rtl' ? 'md:-mr-12 -mr-2' : 'md:-ml-12 -ml-2'}`}
               loading="lazy"
             />
             <div className="flex flex-col">
