@@ -2,8 +2,9 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useLanguage } from '../LanguageContext';
 import { CONTENT } from '../constants';
 import { ClientLogo } from '../types';
+import { useIsMobile } from '../utils/useIsMobile';
 
-const getBucketCount = (length: number) => Math.min(6, Math.max(1, length));
+const getBucketCount = (length: number, maxBuckets: number) => Math.min(maxBuckets, Math.max(1, length));
 
 const createBuckets = (items: ClientLogo[], count: number) => {
   const buckets: ClientLogo[][] = Array.from({ length: count }, () => []);
@@ -60,7 +61,7 @@ const ClientBox: React.FC<{ items: ClientLogo[]; language: 'he' | 'en'; trigger:
         <img
           src={currentLogo.src}
           alt={label}
-          className="max-h-12 max-w-[150px] object-contain"
+          className="max-h-12 max-w-[100px] w-auto h-auto object-contain"
           loading="lazy"
         />
       </div>
@@ -72,14 +73,15 @@ const ClientBox: React.FC<{ items: ClientLogo[]; language: 'he' | 'en'; trigger:
 const ClientSwapper: React.FC = () => {
   const { language } = useLanguage();
   const categories = CONTENT[language].clients.categories;
+  const isMobile = useIsMobile();
 
   const muniBuckets = useMemo(
-    () => createBuckets(categories[0].items, getBucketCount(categories[0].items.length)),
-    [categories]
+    () => createBuckets(categories[0].items, getBucketCount(categories[0].items.length, isMobile ? 3 : 6)),
+    [categories, isMobile]
   );
   const corpBuckets = useMemo(
-    () => createBuckets(categories[1].items, getBucketCount(categories[1].items.length)),
-    [categories]
+    () => createBuckets(categories[1].items, getBucketCount(categories[1].items.length, isMobile ? 3 : 6)),
+    [categories, isMobile]
   );
 
   const [muniTriggers, setMuniTriggers] = useState<number[]>(() => muniBuckets.map(() => 0));

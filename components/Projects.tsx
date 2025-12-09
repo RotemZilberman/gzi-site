@@ -1,20 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CONTENT } from '../constants';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
+import { useIsMobile } from '../utils/useIsMobile';
 
 const Projects: React.FC = () => {
   const { language, dir } = useLanguage();
   const t = CONTENT[language].projects;
   const isRtl = dir === 'rtl';
+  const isMobile = useIsMobile();
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = 3;
+  const itemsPerPage = isMobile ? 1 : 3;
+  const totalSlides = Math.ceil(t.items.length / itemsPerPage);
+
+  useEffect(() => {
+    setCurrentIndex((prev) => {
+      const slideIndex = Math.floor(prev / itemsPerPage);
+      const clampedSlide = Math.min(slideIndex, Math.max(totalSlides - 1, 0));
+      return clampedSlide * itemsPerPage;
+    });
+  }, [itemsPerPage, totalSlides]);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => 
       (prev + itemsPerPage >= t.items.length) ? 0 : prev + itemsPerPage
     );
+  };
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - itemsPerPage < 0 ? Math.max(t.items.length - itemsPerPage, 0) : prev - itemsPerPage));
   };
 
   const visibleProjects = t.items.slice(currentIndex, currentIndex + itemsPerPage);
@@ -34,14 +48,14 @@ const Projects: React.FC = () => {
 
         <div className="relative px-4 md:px-8">
           <button 
-            onClick={() => setCurrentIndex((prev) => (prev - itemsPerPage < 0 ? Math.max(t.items.length - itemsPerPage, 0) : prev - itemsPerPage))}
+            onClick={prevSlide}
             className="hidden md:flex items-center justify-center absolute top-36 left-[-18px] lg:left-[-26px] text-slate-400 hover:text-brand-black transition-colors z-10"
             aria-label="Previous projects"
           >
             {isRtl ? <ArrowLeft size={20} /> : <ArrowRight size={20} />}
           </button>
           <button 
-            onClick={() => setCurrentIndex((prev) => (prev + itemsPerPage >= t.items.length ? 0 : prev + itemsPerPage))}
+            onClick={nextSlide}
             className="hidden md:flex items-center justify-center absolute top-36 right-[-18px] lg:right-[-26px] text-slate-400 hover:text-brand-black transition-colors z-10"
             aria-label="Next projects"
           >
@@ -76,6 +90,19 @@ const Projects: React.FC = () => {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="flex md:hidden justify-center gap-2 mt-6">
+            {Array.from({ length: totalSlides }).map((_, idx) => {
+              const isActive = idx === Math.floor(currentIndex / itemsPerPage);
+              return (
+                <button
+                  key={`dot-${idx}`}
+                  onClick={() => setCurrentIndex(idx * itemsPerPage)}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${isActive ? 'w-6 bg-brand-black' : 'w-2.5 bg-slate-300'}`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

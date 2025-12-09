@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
   const isRtl = dir === 'rtl';
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-center bg-white pt-24 pb-10 overflow-hidden">
+    <section className="relative w-full min-h-screen flex flex-col justify-center bg-white pt-32 md:pt-24 pb-10 overflow-hidden">
       
       {/* Background Ambience - City GIS Pattern & Blobs */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
