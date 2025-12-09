@@ -99,7 +99,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             {/* Language Toggle */}
             <button 
               onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 text-slate-900 hover:bg-slate-200 transition-all text-xs font-bold"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 text-slate-900 hover:bg-slate-200 transition-all text-sm font-bold"
             >
               <Globe className="w-3.5 h-3.5" />
               <span>{language === 'he' ? 'EN' : 'עב'}</span>
@@ -110,7 +110,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="flex items-center gap-4 md:hidden">
             <button 
               onClick={toggleLanguage}
-              className="flex items-center gap-1 px-2 py-1 rounded bg-slate-100 text-slate-900 text-xs font-bold"
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded bg-slate-100 text-slate-900 text-sm font-bold"
             >
               <Globe className="w-3.5 h-3.5" />
               <span>{language === 'he' ? 'EN' : 'עב'}</span>

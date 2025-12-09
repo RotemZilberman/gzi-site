@@ -51,7 +51,7 @@ export const CONTENT = {
       badge: 'AI-GIS Innovation',
       titleStart: 'העתיד של',
       titleEnd: 'המרחב העירוני',
-      subtitle: ' GZI Consulting מחברת בין בינה מלאכותית למידע גיאוגרפי. אנו הופכים מידע לידע ומנגישים אותו בצורה פשוטה ברשויות המובילות בישראל.',
+      subtitle: 'GZI Consulting מייעצת ויישמת מערכות מידע בגופים ממשלתיים ובחברות בדגש על מערכות GIS וניהול מקרקעין (GZI. (LIS מחברת בין בינה מלאכותית למידע גיאוגרפי. ',
       ctaPrimary: 'קבע פגישת ייעוץ',
       ctaSecondary: 'צפה בפרויקטים',
       widgets: {
@@ -331,7 +331,7 @@ GZI מלווה את הרשות בכל שלבי התהליך:
       badge: 'AI-GIS Innovation',
       titleStart: 'The Future of',
       titleEnd: 'Urban Space',
-      subtitle: 'GZI Consulting bridges Artificial Intelligence and Geographic Information. We turn data into insight and make it simple to use for Israel\'s leading municipalities.',
+      subtitle: 'GZI Consulting advises and implements information systems for government bodies and companies, focused on GIS and land information (LIS). We bridge AI and geospatial data.',
       ctaPrimary: 'Book Consultation',
       ctaSecondary: 'View Projects',
       widgets: {

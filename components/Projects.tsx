@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { CONTENT } from '../constants';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
@@ -13,6 +13,8 @@ const Projects: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerPage = isMobile ? 1 : 3;
   const totalSlides = Math.ceil(t.items.length / itemsPerPage);
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
 
   useEffect(() => {
     setCurrentIndex((prev) => {
@@ -26,6 +28,33 @@ const Projects: React.FC = () => {
     setCurrentIndex((prev) => 
       (prev + itemsPerPage >= t.items.length) ? 0 : prev + itemsPerPage
     );
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!isMobile) return;
+    const touch = e.touches[0];
+    touchStartX.current = touch.clientX;
+    touchStartY.current = touch.clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!isMobile) return;
+    const startX = touchStartX.current;
+    const startY = touchStartY.current;
+    touchStartX.current = null;
+    touchStartY.current = null;
+    if (startX === null || startY === null) return;
+
+    const touch = e.changedTouches[0];
+    const deltaX = touch.clientX - startX;
+    const deltaY = touch.clientY - startY;
+    if (Math.abs(deltaX) < 40 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+
+    if (deltaX < 0) {
+      nextSlide();
+    } else {
+      prevSlide();
+    }
   };
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - itemsPerPage < 0 ? Math.max(t.items.length - itemsPerPage, 0) : prev - itemsPerPage));
@@ -46,7 +75,11 @@ const Projects: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative px-4 md:px-8">
+        <div 
+          className="relative px-4 md:px-8"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <button 
             onClick={prevSlide}
             className="hidden md:flex items-center justify-center absolute top-36 left-[-18px] lg:left-[-26px] text-slate-400 hover:text-brand-black transition-colors z-10"
