@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useLanguage } from '../LanguageContext';
 import { CONTENT } from '../constants';
 import { ClientLogo } from '../types';
@@ -16,38 +16,48 @@ const createBuckets = (items: ClientLogo[], count: number) => {
 
 const ClientBox: React.FC<{ items: ClientLogo[]; language: 'he' | 'en'; trigger: number }> = ({ items, language, trigger }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isFading, setIsFading] = useState(false);
+  const [nextIndex, setNextIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const initialRender = useRef(true);
 
   useEffect(() => {
     setCurrentIndex((prev) => Math.min(prev, Math.max(items.length - 1, 0)));
   }, [items.length]);
 
   useEffect(() => {
-    if (items.length <= 1) return;
+    // Skip animation on initial render
+    if (initialRender.current) {
+      initialRender.current = false;
+      return;
+    }
+    
+    if (items.length <= 1 || isAnimating) return;
 
-    const fadeDuration = 500; // match tailwind duration-500
-    const fadeGap = 80; // small gap before fading back in
-
-    setIsFading(true);
-
-    const swap = setTimeout(() => {
-      setCurrentIndex((prev) => {
-        let next = prev;
-        while (next === prev && items.length > 1) {
-          next = Math.floor(Math.random() * items.length);
-        }
-        return next;
-      });
-    }, fadeDuration);
-
-    const fadeIn = setTimeout(() => setIsFading(false), fadeDuration + fadeGap);
+    // Calculate next random index
+    let next = currentIndex;
+    while (next === currentIndex && items.length > 1) {
+      next = Math.floor(Math.random() * items.length);
+    }
+    setNextIndex(next);
+    
+    // Start fade out
+    setIsAnimating(true);
+    
+    // After fade out, swap and fade in
+    const swapTimer = setTimeout(() => {
+      setCurrentIndex(next);
+    }, 400);
+    
+    // End animation
+    const endTimer = setTimeout(() => {
+      setIsAnimating(false);
+    }, 800);
 
     return () => {
-      clearTimeout(swap);
-      clearTimeout(fadeIn);
-      setIsFading(false);
+      clearTimeout(swapTimer);
+      clearTimeout(endTimer);
     };
-  }, [trigger, items]);
+  }, [trigger]);
 
   const currentLogo = items[currentIndex];
   if (!currentLogo) return null;
@@ -56,13 +66,19 @@ const ClientBox: React.FC<{ items: ClientLogo[]; language: 'he' | 'en'; trigger:
   return (
     <div className="h-20 flex items-center justify-center p-3">
       <div
-        className={`h-full w-full flex items-center justify-center transition-opacity duration-500 ease-in-out ${isFading ? 'opacity-0' : 'opacity-100'}`}
+        className={`h-full w-full flex items-center justify-center transition-all duration-400 ease-in-out ${
+          isAnimating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+        }`}
       >
         <img
           src={currentLogo.src}
           alt={label}
           className="max-h-12 max-w-[100px] w-auto h-auto object-contain"
           loading="lazy"
+          onError={(e) => {
+            // Hide broken images
+            (e.target as HTMLImageElement).style.display = 'none';
+          }}
         />
       </div>
       <span className="sr-only">{label}</span>
@@ -86,6 +102,7 @@ const ClientSwapper: React.FC = () => {
 
   const [muniTriggers, setMuniTriggers] = useState<number[]>(() => muniBuckets.map(() => 0));
   const [corpTriggers, setCorpTriggers] = useState<number[]>(() => corpBuckets.map(() => 0));
+  const lastTriggeredRef = useRef<{ type: string; index: number } | null>(null);
 
   useEffect(() => {
     setMuniTriggers(muniBuckets.map(() => 0));
@@ -104,16 +121,42 @@ const ClientSwapper: React.FC = () => {
 
     if (!selectableBuckets.length) return;
 
-    const interval = setInterval(() => {
-      const choice = selectableBuckets[Math.floor(Math.random() * selectableBuckets.length)];
+    const triggerSwap = () => {
+      // Pick a random bucket, but try to avoid the same one twice in a row
+      let choice = selectableBuckets[Math.floor(Math.random() * selectableBuckets.length)];
+      
+      // Try up to 3 times to pick a different bucket
+      let attempts = 0;
+      while (
+        lastTriggeredRef.current &&
+        choice.type === lastTriggeredRef.current.type &&
+        choice.index === lastTriggeredRef.current.index &&
+        attempts < 3 &&
+        selectableBuckets.length > 1
+      ) {
+        choice = selectableBuckets[Math.floor(Math.random() * selectableBuckets.length)];
+        attempts++;
+      }
+      
+      lastTriggeredRef.current = choice;
+
       if (choice.type === 'muni') {
         setMuniTriggers((prev) => prev.map((t, idx) => (idx === choice.index ? t + 1 : t)));
       } else {
         setCorpTriggers((prev) => prev.map((t, idx) => (idx === choice.index ? t + 1 : t)));
       }
-    }, 3000);
+    };
 
-    return () => clearInterval(interval);
+    // Stagger the initial animations
+    const initialDelay = setTimeout(triggerSwap, 2000);
+    
+    // Then continue with regular interval
+    const interval = setInterval(triggerSwap, 3500);
+
+    return () => {
+      clearTimeout(initialDelay);
+      clearInterval(interval);
+    };
   }, [muniBuckets, corpBuckets]);
 
   return (

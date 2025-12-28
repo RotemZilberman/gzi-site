@@ -31,6 +31,7 @@ export interface ClientCategory {
 export interface ProjectItem {
   title: string;
   category: string;
+  categories: string[];
   description: string;
   image: string;
   tags: string[];

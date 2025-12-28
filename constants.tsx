@@ -28,7 +28,7 @@ const WATER_AND_ECON_LOGOS: ClientLogo[] = [
   { he: 'הבאר השלישית', en: "HaBe'er HaShlishit", src: '/companies/water-authorities/logo.png' },
   { he: 'מי אביבים', en: 'Mei Avivim', src: '/companies/water-authorities/logo_my_avivim.png' },
   { he: 'קולחי גלבוע', en: 'Kolchei Gilboa', src: '/companies/water-authorities/logo.jpg' },
-  { he: 'חברה כלכלית ראש העין', en: "Rosh Ha'ayin Economic Company", src: '/companies/water-authorities/Logo-3.png' },
+  { he: 'חברה כלכלית ראש העין', en: "Rosh Ha'ayin Economic Company", src: '/companies/water-authorities/Logo-3.jpg' },
   { he: 'מי רמת גן', en: 'Mei Ramat Gan', src: '/companies/water-authorities/מי-רמת-גן.jpg' },
   { he: 'מי רעננה', en: "Mei Ra'anana", src: '/companies/water-authorities/Updatedlogo_raanana.jpg' },
   { he: 'מי שיקמה', en: 'Mei Shikma', src: '/companies/water-authorities/מי-שיקמה-שירות-לקוחות-לוגו.jpg' },
@@ -235,48 +235,127 @@ GZI מלווה את הרשות בכל שלבי התהליך:
       subtitle: 'דוגמאות מליווי רשויות, תאגידי מים וארגונים פרטיים — משלב הסקר ועד GIS Active ו-AI.',
       next: 'הבא',
       prev: 'הקודם',
+      allCategories: 'הכל',
       items: [
         {
           title: 'ניהול סקר לאיתור עבירות בנייה — עיריית הרצליה',
           category: 'Data',
+          categories: ['Data', 'Decision Support'],
           description: 'בחינת שינויים בין צילומי אוויר לאיתור חריגות בנייה, כולל בקרה וטיוב נתונים.',
           image: '/images/survey_management.jpg',
           tags: ['Data', 'QA', 'Planning']
         },
         {
           title: 'הקמת מערכת GIS ארגונית — עיריית באר יעקב',
-          category: 'Application',
+          category: 'Digital Platform',
+          categories: ['Data', 'Digital Platform', 'Smart City'],
           description: 'GIS ארגוני לכל מחלקות העירייה: אפיון, יישום, אינטגרציה והדרכות משתמשים.',
           image: '/images/establish_gis_beer_yaakov.jpg',
           tags: ['GIS', 'Implementation', 'Training']
         },
         {
           title: 'הסבת נתונים והקמת GIS — מי אביבים',
-          category: 'Application',
+          category: 'Digital Platform',
+          categories: ['Data', 'Digital Platform', 'Infrastructure & Asset Value'],
           description: 'הסבת נתונים ממערכת קיימת והקמת GIS ארגוני לניהול עצמאי של נתוני התאגיד.',
           image: '/images/water_establishment_mei_avivim.jpg',
           tags: ['Water Utility', 'Data Migration', 'GIS']
         },
         {
           title: 'יישום GIS Active — עיריית קריית מלאכי',
-          category: 'Application',
+          category: 'Digital Platform',
+          categories: ['Data', 'Digital Platform', 'Smart City'],
           description: 'העצמת משתמשים, חיבור מקורות מידע ובניית מאגר עירוני מתועד בגישת GIS Active.',
           image: '/images/gis_active.jpg',
           tags: ['GIS Active', 'Data Hub', 'Process']
         },
         {
           title: 'סקר איתור תשתיות — מי רמת גן',
-          category: 'Data & Application',
+          category: 'Infrastructure & Asset Value',
+          categories: ['Infrastructure & Asset Value', 'Data'],
           description: 'איתור מלא של קווי מים וביוב, ניקוי מעל 600 ק״מ נתונים ושילוב ב-CRM הארגוני.',
           image: '/images/infrastructure_findings.jpg',
           tags: ['Water Utility', 'Data Collection', 'Integration']
         },
         {
           title: 'ויזואליזציה של נתונים — עיריית אילת',
-          category: 'Data',
+          category: 'Smart City',
+          categories: ['Smart City', 'Decision Support'],
           description: 'הפיכת מידע גולמי לסיפור ברור: מפות, דשבורדים ותרשימים שמזהים מגמות.',
           image: '/images/data_virtualization.jpg',
           tags: ['Dashboards', 'Visualization', 'Insights']
+        },
+        {
+          title: 'סקר הידרנטים — מועצה אזורית עמק חפר',
+          category: 'Infrastructure & Asset Value',
+          categories: ['Data', 'Decision Support', 'Infrastructure & Asset Value'],
+          description: 'ניהול סקר מים באמצעות יישומים ייעודיים לקליטה וניתוח נתונים בזמן אמת.',
+          image: '/images/hydrant.jpg',
+          tags: ['Water', 'Survey', 'Real-time']
+        },
+        {
+          title: 'בדיקות יציבות לעמודי מאור — עיריית קריית מלאכי',
+          category: 'Infrastructure & Asset Value',
+          categories: ['Data', 'Decision Support', 'Infrastructure & Asset Value'],
+          description: 'ניהול ומעקב אחר סקר עמודי תאורה, כולל ביצוע בדיקות יציבות לזיהוי סיכונים ומניעת קריסת עמודים.',
+          image: '/images/traffic_light.jpg',
+          tags: ['Infrastructure', 'Safety', 'Survey']
+        },
+        {
+          title: 'הקמת ארכיב דיגיטלי למסמכי הוועדה — מועצה אזורית שדות דן',
+          category: 'Urban Planning',
+          categories: ['Data', 'Urban Planning'],
+          description: 'דיגיטציה מלאה של ארכיון הוועדה, כולל סריקה וארכוב גאוגרפי של אלפי מסמכים.',
+          image: '/images/book.jpg',
+          tags: ['Archive', 'Digital', 'Planning']
+        },
+        {
+          title: 'יצירת בסיס נתונים של זכויות בנייה וייעודי קרקע — עיריית אילת',
+          category: 'Urban Planning',
+          categories: ['Data', 'Urban Planning'],
+          description: 'ניתוח מאות תוכניות בניין עיר לצורך הקמת מסד נתונים תכנוני מקיף המפרט זכויות בנייה בכל תא שטח.',
+          image: '/images/beach_city.jpg',
+          tags: ['Planning', 'Database', 'Land Rights']
+        },
+        {
+          title: 'צילומי אוויר ועיבודם — עיריית רמת גן',
+          category: 'Data',
+          categories: ['Data'],
+          description: 'ביצוע פרויקטים של צילומי אוויר והפקת תוצרים גאודטיים מתקדמים, כולל מודלים תלת־ממדיים, צילומים אלכסוניים ותוצרים מרחביים נוספים.',
+          image: '/images/top_view_city.jpg',
+          tags: ['Aerial', '3D', 'Geodetic']
+        },
+        {
+          title: 'מיפוי דמוגרפי — עיריית קריית מלאכי',
+          category: 'Smart City',
+          categories: ['Data', 'Smart City', 'Decision Support'],
+          description: 'מיפוי אוכלוסיית התושבים וניתוח מגמות והעדפות, כולל בחירת גני ילדים והצטרפות לתנועות נוער.',
+          image: '/images/town.jpg',
+          tags: ['Demographics', 'Analysis', 'Trends']
+        },
+        {
+          title: 'יישום מערכת לניהול הוועדה לתכנון ובנייה — עיריית בת ים',
+          category: 'Urban Planning',
+          categories: ['Smart City', 'Decision Support', 'Digital Platform', 'Urban Planning'],
+          description: 'ניתוח צרכים ויישום מערכת לניהול הוועדה, כולל הסבת מערכות, טיוב נתונים ושילוב כלים טכנולוגיים מתקדמים.',
+          image: '/images/round_roads.jpg',
+          tags: ['Planning Committee', 'System', 'Integration']
+        },
+        {
+          title: 'יישום מערכת GIS מנוהלת AI — עיריית אילת',
+          category: 'Smart City',
+          categories: ['Smart City', 'Decision Support', 'Digital Platform'],
+          description: 'שילוב ייחודי וראשון מסוגו של כלי בינה מלאכותית לניהול ותפעול מערכת מידע גאוגרפית (GIS).',
+          image: '/images/city_hologram.jpg',
+          tags: ['AI', 'GIS', 'Innovation']
+        },
+        {
+          title: 'יישום GMS — Geographic Management Services (עיריית קריית מלאכי)',
+          category: 'Digital Platform',
+          categories: ['Smart City', 'Decision Support', 'Digital Platform', 'Data'],
+          description: 'מתן שירותים כוללים לניהול GIS ארגוני – "הכול בסל אחד", החל מייעוץ ועד ליישום מלא.',
+          image: '/images/beach.jpg',
+          tags: ['GMS', 'Full Service', 'GIS Management']
         }
       ]
     },
@@ -313,7 +392,7 @@ GZI מלווה את הרשות בכל שלבי התהליך:
       },
       placeholders: {
         name: 'ישראל ישראלי',
-        org: 'שם הרשות',
+        org: 'שם הרשות / שם הארגון',
         email: 'email@company.com',
         message: 'נשמח לשמוע על האתגרים שלכם...'
       }
@@ -504,48 +583,127 @@ Data works for the organization (not just stored), decision time shrinks, and a 
       subtitle: 'Work with authorities, water utilities, and private orgs — from surveys to GIS Active and AI.',
       next: 'Next',
       prev: 'Previous',
+      allCategories: 'All',
       items: [
         {
           title: 'Building-violation survey — Herzliya Municipality',
           category: 'Data',
+          categories: ['Data', 'Decision Support'],
           description: 'Change detection on aerial imagery to spot construction violations, including QA and data curation.',
           image: '/images/survey_management.jpg',
           tags: ['Data', 'QA', 'Planning']
         },
         {
           title: 'Enterprise GIS — Beer Yaakov Municipality',
-          category: 'Application',
+          category: 'Digital Platform',
+          categories: ['Data', 'Digital Platform', 'Smart City'],
           description: 'City-wide GIS: scoping, implementation, integrations, and user training for all departments.',
           image: '/images/establish_gis_beer_yaakov.jpg',
           tags: ['GIS', 'Implementation', 'Training']
         },
         {
           title: 'Data migration & GIS rollout — Mei Avivim',
-          category: 'Application',
+          category: 'Digital Platform',
+          categories: ['Data', 'Digital Platform', 'Infrastructure & Asset Value'],
           description: 'Migrating from a legacy system and deploying an enterprise GIS for independent utility data management.',
           image: '/images/water_establishment_mei_avivim.jpg',
           tags: ['Water Utility', 'Data Migration', 'GIS']
         },
         {
           title: 'GIS Active rollout — Kiryat Malachi',
-          category: 'Application',
+          category: 'Digital Platform',
+          categories: ['Data', 'Digital Platform', 'Smart City'],
           description: 'Implementing GIS Active: empowering users, connecting data sources, and building a documented civic hub.',
           image: '/images/gis_active.jpg',
           tags: ['GIS Active', 'Data Hub', 'Process']
         },
         {
           title: 'Infrastructure survey — Mei Ramat Gan',
-          category: 'Data & Application',
+          category: 'Infrastructure & Asset Value',
+          categories: ['Infrastructure & Asset Value', 'Data'],
           description: 'Full survey of water and sewer lines, cleaning 600km of data, and integrating with the corporate CRM.',
           image: '/images/infrastructure_findings.jpg',
           tags: ['Water Utility', 'Data Collection', 'Integration']
         },
         {
           title: 'Data visualization — Eilat Municipality',
-          category: 'Data',
+          category: 'Smart City',
+          categories: ['Smart City', 'Decision Support'],
           description: 'Turning raw information into clear stories: maps, dashboards, and charts that surface trends.',
           image: '/images/data_virtualization.jpg',
           tags: ['Dashboards', 'Visualization', 'Insights']
+        },
+        {
+          title: 'Hydrant Survey — Emek Hefer Regional Council',
+          category: 'Infrastructure & Asset Value',
+          categories: ['Data', 'Decision Support', 'Infrastructure & Asset Value'],
+          description: 'Managing a water survey using dedicated applications for real-time data collection and analysis.',
+          image: '/images/hydrant.jpg',
+          tags: ['Water', 'Survey', 'Real-time']
+        },
+        {
+          title: 'Lighting Pole Stability Tests — Kiryat Malachi Municipality',
+          category: 'Infrastructure & Asset Value',
+          categories: ['Data', 'Decision Support', 'Infrastructure & Asset Value'],
+          description: 'Managing and tracking lighting pole surveys, including stability tests to identify risks and prevent pole collapse.',
+          image: '/images/traffic_light.jpg',
+          tags: ['Infrastructure', 'Safety', 'Survey']
+        },
+        {
+          title: 'Digital Archive for Committee Documents — Sdot Dan Regional Council',
+          category: 'Urban Planning',
+          categories: ['Data', 'Urban Planning'],
+          description: 'Full digitization of the committee archive, including scanning and geographic archiving of thousands of documents.',
+          image: '/images/book.jpg',
+          tags: ['Archive', 'Digital', 'Planning']
+        },
+        {
+          title: 'Building Rights & Land Use Database — Eilat Municipality',
+          category: 'Urban Planning',
+          categories: ['Data', 'Urban Planning'],
+          description: 'Analyzing hundreds of urban plans to create a comprehensive planning database detailing building rights for every land parcel.',
+          image: '/images/beach_city.jpg',
+          tags: ['Planning', 'Database', 'Land Rights']
+        },
+        {
+          title: 'Aerial Photography & Processing — Ramat Gan Municipality',
+          category: 'Data',
+          categories: ['Data'],
+          description: 'Executing aerial photography projects and producing advanced geodetic products, including 3D models, oblique imagery, and additional spatial outputs.',
+          image: '/images/top_view_city.jpg',
+          tags: ['Aerial', '3D', 'Geodetic']
+        },
+        {
+          title: 'Demographic Mapping — Kiryat Malachi Municipality',
+          category: 'Smart City',
+          categories: ['Data', 'Smart City', 'Decision Support'],
+          description: 'Mapping resident population and analyzing trends and preferences, including kindergarten selection and youth movement participation.',
+          image: '/images/town.jpg',
+          tags: ['Demographics', 'Analysis', 'Trends']
+        },
+        {
+          title: 'Planning & Building Committee System — Bat Yam Municipality',
+          category: 'Urban Planning',
+          categories: ['Smart City', 'Decision Support', 'Digital Platform', 'Urban Planning'],
+          description: 'Needs analysis and system implementation for committee management, including system migration, data curation, and advanced technology integration.',
+          image: '/images/round_roads.jpg',
+          tags: ['Planning Committee', 'System', 'Integration']
+        },
+        {
+          title: 'AI-Managed GIS System — Eilat Municipality',
+          category: 'Smart City',
+          categories: ['Smart City', 'Decision Support', 'Digital Platform'],
+          description: 'A unique, first-of-its-kind integration of AI tools for managing and operating a geographic information system (GIS).',
+          image: '/images/city_hologram.jpg',
+          tags: ['AI', 'GIS', 'Innovation']
+        },
+        {
+          title: 'GMS — Geographic Management Services (Kiryat Malachi Municipality)',
+          category: 'Digital Platform',
+          categories: ['Smart City', 'Decision Support', 'Digital Platform', 'Data'],
+          description: 'Comprehensive GIS management services – "All in One Basket", from consulting to full implementation.',
+          image: '/images/beach.jpg',
+          tags: ['GMS', 'Full Service', 'GIS Management']
         }
       ]
     },
