@@ -338,7 +338,7 @@ GZI מלווה את הרשות בכל שלבי התהליך:
           category: 'Urban Planning',
           categories: ['Smart City', 'Decision Support', 'Digital Platform', 'Urban Planning'],
           description: 'ניתוח צרכים ויישום מערכת לניהול הוועדה, כולל הסבת מערכות, טיוב נתונים ושילוב כלים טכנולוגיים מתקדמים.',
-          image: '/images/round_roads.jpg',
+          image: '/images/beach.jpg',
           tags: ['Planning Committee', 'System', 'Integration']
         },
         {
@@ -350,11 +350,11 @@ GZI מלווה את הרשות בכל שלבי התהליך:
           tags: ['AI', 'GIS', 'Innovation']
         },
         {
-          title: 'יישום GMS — Geographic Management Services (עיריית קריית מלאכי)',
+          title: 'יישום  (Geographic Management Services) GMS — עיריית קריית מלאכי',
           category: 'Digital Platform',
           categories: ['Smart City', 'Decision Support', 'Digital Platform', 'Data'],
           description: 'מתן שירותים כוללים לניהול GIS ארגוני – "הכול בסל אחד", החל מייעוץ ועד ליישום מלא.',
-          image: '/images/beach.jpg',
+          image: '/images/round_roads.jpg',
           tags: ['GMS', 'Full Service', 'GIS Management']
         }
       ]
@@ -686,7 +686,7 @@ Data works for the organization (not just stored), decision time shrinks, and a 
           category: 'Urban Planning',
           categories: ['Smart City', 'Decision Support', 'Digital Platform', 'Urban Planning'],
           description: 'Needs analysis and system implementation for committee management, including system migration, data curation, and advanced technology integration.',
-          image: '/images/round_roads.jpg',
+          image: '/images/beach.jpg',
           tags: ['Planning Committee', 'System', 'Integration']
         },
         {
@@ -698,11 +698,11 @@ Data works for the organization (not just stored), decision time shrinks, and a 
           tags: ['AI', 'GIS', 'Innovation']
         },
         {
-          title: 'GMS — Geographic Management Services (Kiryat Malachi Municipality)',
+          title: 'GMS (Geographic Management Services) — Kiryat Malachi Municipality',
           category: 'Digital Platform',
           categories: ['Smart City', 'Decision Support', 'Digital Platform', 'Data'],
           description: 'Comprehensive GIS management services – "All in One Basket", from consulting to full implementation.',
-          image: '/images/beach.jpg',
+          image: '/images/round_roads.jpg',
           tags: ['GMS', 'Full Service', 'GIS Management']
         }
       ]
