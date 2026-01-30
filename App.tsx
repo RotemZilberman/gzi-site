@@ -9,7 +9,7 @@ import Stats from './components/Stats';
 import Contact from './components/Contact';
 import { LanguageProvider } from './LanguageContext';
 
-const AppContent = () => {
+export const AppContent = () => {
   return (
     <Layout>
       <Hero />
