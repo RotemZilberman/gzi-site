@@ -394,7 +394,7 @@ GZI מלווה את הרשות בכל שלבי התהליך:
         name: 'ישראל ישראלי',
         org: 'שם הרשות / שם הארגון',
         email: 'email@company.com',
-        message: 'נשמח לשמוע על האתגרים שלכם...'
+        message: 'ספרו לנו...'
       }
     }
   },
@@ -742,7 +742,7 @@ Data works for the organization (not just stored), decision time shrinks, and a 
         name: 'Israel Israeli',
         org: 'Authority Name',
         email: 'email@company.com',
-        message: 'We\'d love to hear about your challenges...'
+        message: 'Tell us...'
       }
     }
   }

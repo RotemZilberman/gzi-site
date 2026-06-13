@@ -7,7 +7,7 @@ const Contact: React.FC = () => {
   const { language, dir } = useLanguage();
   const t = CONTENT[language].contact;
   const isRtl = dir === 'rtl';
-  const formSubmitEndpoint = 'https://formsubmit.co/ajax/3fdf0371138a7847ec88014155054eec';
+  const formSubmitEndpoint = 'https://formsubmit.co/ajax/gil@gzi.co.il';
   const [formData, setFormData] = useState({ name: '', org: '', email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState<string>('');
@@ -31,7 +31,7 @@ const Contact: React.FC = () => {
         body: JSON.stringify({
           name: formData.name,
           organization: formData.org,
-          email: formData.email,
+          email: "gil@gzi.co.il",
           _replyto: formData.email,
           message: formData.message,
           _subject: 'New meeting request from gzi-site',
@@ -172,7 +172,8 @@ const Contact: React.FC = () => {
                   required
                   value={formData.message}
                   onChange={handleChange('message')}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition-all bg-slate-50 focus:bg-white resize-none" 
+                  dir={dir}
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition-all bg-slate-50 focus:bg-white resize-none"
                   placeholder={t.placeholders.message}
                 ></textarea>
               </div>

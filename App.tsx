@@ -7,6 +7,7 @@ import Services from './components/Services';
 import Projects from './components/Projects';
 import Stats from './components/Stats';
 import Contact from './components/Contact';
+import JobPosting from './components/JobPosting';
 import { LanguageProvider } from './LanguageContext';
 
 export const AppContent = () => {
@@ -23,6 +24,7 @@ export const AppContent = () => {
 
       <Services />
       <Projects />
+      <JobPosting />
       <Contact />
     </Layout>
   );
