@@ -238,7 +238,7 @@ GZI מלווה את הרשות בכל שלבי התהליך:
       allCategories: 'הכל',
       items: [
         {
-          title: 'UrbanIQ — מערכת ניהול מרשם תושבים חכמה — המועצה המקומית ניר צבי',
+          title: 'UrbanIQ — מערכת ניהול מרשם תושבים חכמה — ניר צבי',
           category: 'Digital Platform',
           categories: ['Digital Platform', 'Smart City', 'Decision Support'],
           description: 'פלטפורמה רב-ישובית לניהול מרשם תושבים: נכסים, יחידות דיור, קשרי משפחה ושכירויות, לצד פורטל שירות עצמי לתושב המאומת בקוד חד-פעמי (OTP).',
@@ -594,7 +594,7 @@ Data works for the organization (not just stored), decision time shrinks, and a 
       allCategories: 'All',
       items: [
         {
-          title: 'UrbanIQ — Smart Resident Registry Platform — Nir Tzvi Local Council',
+          title: 'UrbanIQ — Smart Resident Registry — Nir Tzvi',
           category: 'Digital Platform',
           categories: ['Digital Platform', 'Smart City', 'Decision Support'],
           description: 'A multi-tenant resident-registry platform managing properties, housing units, family relationships and tenancies, alongside an OTP-verified citizen self-service portal.',
