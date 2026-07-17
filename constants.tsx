@@ -238,6 +238,14 @@ GZI מלווה את הרשות בכל שלבי התהליך:
       allCategories: 'הכל',
       items: [
         {
+          title: 'UrbanIQ — מערכת ניהול מרשם תושבים חכמה — המועצה המקומית ניר צבי',
+          category: 'Digital Platform',
+          categories: ['Digital Platform', 'Smart City', 'Decision Support'],
+          description: 'פלטפורמה רב-ישובית לניהול מרשם תושבים: נכסים, יחידות דיור, קשרי משפחה ושכירויות, לצד פורטל שירות עצמי לתושב המאומת בקוד חד-פעמי (OTP).',
+          image: '/images/urbaniq.svg',
+          tags: ['Resident Registry', 'Self-Service', 'Multi-Tenant']
+        },
+        {
           title: 'ניהול סקר לאיתור עבירות בנייה — עיריית הרצליה',
           category: 'Data',
           categories: ['Data', 'Decision Support'],
@@ -585,6 +593,14 @@ Data works for the organization (not just stored), decision time shrinks, and a 
       prev: 'Previous',
       allCategories: 'All',
       items: [
+        {
+          title: 'UrbanIQ — Smart Resident Registry Platform — Nir Tzvi Local Council',
+          category: 'Digital Platform',
+          categories: ['Digital Platform', 'Smart City', 'Decision Support'],
+          description: 'A multi-tenant resident-registry platform managing properties, housing units, family relationships and tenancies, alongside an OTP-verified citizen self-service portal.',
+          image: '/images/urbaniq.svg',
+          tags: ['Resident Registry', 'Self-Service', 'Multi-Tenant']
+        },
         {
           title: 'Building-violation survey — Herzliya Municipality',
           category: 'Data',

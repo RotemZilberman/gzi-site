@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mdfind -name urbaniq)",
+      "Bash(npx tsc *)",
+      "Bash(curl -s http://localhost:3000/images/urbaniq.svg)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(pkill -f \"vite\")"
+    ]
+  }
+}
